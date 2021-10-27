@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">BT_Scanner</string>
+    <string name="submit">create</string>
+    <string name="bt_scanning">Scanning...</string>
+    <string name="loc_req_denied_msg">Location permission denied</string>
+    <string name="loc_req_title">Location title required</string>
+    <string name="loc_req_msg">Location permission required</string>
+    <string name="okay">Okay</string>
+
+</resources>
