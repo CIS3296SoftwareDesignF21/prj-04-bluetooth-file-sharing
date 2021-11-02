@@ -1,5 +1,5 @@
 # Persona 2 - Tony
-## Tony - Introveted Student
+## Tony - Introverted Student
 
 Tony is a really shy student who knows how to use his phone and is on social media. Tony wants to have party 
 to become more popular, but he is afriad to invite his classmates face to face. So Tony uses the bluetooth sharing app
