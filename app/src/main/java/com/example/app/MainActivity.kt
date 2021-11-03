@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // Hello, world
+        // Hello world
 
     }
 
