@@ -48,6 +48,14 @@ complexity.
  
  
 ##  Vision statement
+FOR teachers, people without reliable internet, communicator, and more WHO need a way to quickly and 
+reliably transfer files to near-by recipients, THE FileShAIR mobile app is a bluetooth driven app
+THAT sets up a file sharing network from one phone to multiple others via bluetooth
+
+UNLIKE Android Nearby Share, users can choose to listen in so that the files arent available to 
+everyone. This leads to a pseudo-community-privacy file share channel. OUR app allows for simple file
+transfer between expecting parties who need the data quickly.
+
 ##  Feature list / Use cases
 ##  Minimal project
 
