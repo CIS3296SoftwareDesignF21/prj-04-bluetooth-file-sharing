@@ -1,5 +1,11 @@
 # Bluetooth File Sharing
 
+Trello Board Link: https://trello.com/b/GyVu70Z6/bridgefy
+
+
+
+
+
 ## Project Abstract
 
 The goal of this project will be to create an app(android or ios) that allows users to upload
@@ -38,6 +44,12 @@ complexity.
 - Message database
 - Hash tables for packet sorting and storing
 - More complex user interface
+
+ 
+ 
+##  Vision statement
+##  Feature list / Use cases
+##  Minimal project
 
 
 ## Required Resources
