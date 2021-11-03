@@ -42,6 +42,11 @@ complexity.
 
 ## Required Resources
 
-**This project could be completed using either of the following languages:**
+**This project uses:**
 * Java
 * Kotlin
+
+**To Build**
+This project must be built using gradle and the Android SDK >6.0. To built all that is needed is to execute the 
+gradle build scripts, this is done very easily using either intelliJ or Android Studio. Running the application
+requires an Android device emulator or a physical device. 
