@@ -107,3 +107,16 @@ outside of laptop and word processor usage. She spends most of her time rigorous
 up to date with the newest technology or communication trends. Jennifer's curiculum involve various handouts, worksheets, and quizes.She has never been one for accepting change in her line of
 work. However, with COVID-19 still prevalent, she needs a paperless, reliable, and quick way to get handouts to her students in class on demand. As much as she was opposed to integrating online
 solutions into her line of work, Jennifer uses her limited technology skills to share her material with her class.
+
+## Persona 5 - Emma: A genius hacker 
+
+Emma is a genius hacker who knows the ins and outs of every computer system on the planet. With a Masters in computer science and over 20 years of industry experience, she's the best of the best. After pulling off a multi-billion dollar digital heist, Emma has to meticulously cover her tracks. Determined to evade detection by the NSA and other government agencies, Emma turns to bridgefy to securely exfiltrate the stolen data to her accomplices. Bridgefy is the ideal solution to her problems, as it avoids common channels of communication that are more likely to be monitored by the people trying to catch her in the act.  
+
+## Persona 6 - Luis: Aspiring Artist
+
+Luis is a 21 year old living in the city. He's quite adept with technology.
+He won't ever be found without her android phone or computer. Often, in his spare time, 
+he is making music on her computer and recording vocals on his phone.
+When he finishes making songs he often sends them to his friends and family as a 
+trial run using Bridgefy. Bridgefy allows him to easily market himself by sending him 
+songs to everyone he knows. It is the key to making him a star.
