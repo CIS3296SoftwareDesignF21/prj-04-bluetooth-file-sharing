@@ -84,3 +84,26 @@ as it's their only way to transfer files with the absence of other forms of tele
 construction worker. He has an Android phone but doesn't really know how to use it. He has a bare minimum understanding of technology; he knows how to take a 
 picture and open an app but that's about it. Carl wants to use Bridgefy to send pictures of his kids to his brother who lives a few miles away. Fortunately, 
 there are enough users between him and his brother to bridge the gap between them via multiple hops of bluetooth. 
+
+## Persona 2 - Tony: Introverted Student
+
+Tony is a really shy student who knows how to use his phone and is on social media. Tony wants to have party 
+to become more popular, but he is afriad to invite his classmates face to face. So Tony uses the bluetooth sharing app
+at school to send invitations to everyone there who also has the app. The invitation includes pictures and a message
+with details about the party for everyone to see. Everyone gets the invitation and thinks that Tony is so cool for using
+bluetooth to invite them that they all come. Tony becomes popular and gains confidence.
+
+## Persona 3 - Peter: Picky Music Listener
+
+Peter is definitely not an expert with technology, but he knows his way around his phone. He chooses to buy his music
+off the internet rather than pay for subscription services. He gets a new android phone and will like to transfer his 
+music library stored in a folder on his current android phone. He realized that using the Bridgefly app he can select
+all his old files and send them over to his new phone.
+
+## Persona 4 - Jennifer: An old-fashioned teacher who is too busy to stay on top of technology trends
+
+Jennifer is a 33 year old English high school teacher. She completed up through her bachelors in teaching and english while at Temple University in 2019. She knows very little about technology
+outside of laptop and word processor usage. She spends most of her time rigorously working on lesson plans and for her students and raising her new born child. She doesnt have time to keep
+up to date with the newest technology or communication trends. Jennifer's curiculum involve various handouts, worksheets, and quizes.She has never been one for accepting change in her line of
+work. However, with COVID-19 still prevalent, she needs a paperless, reliable, and quick way to get handouts to her students in class on demand. As much as she was opposed to integrating online
+solutions into her line of work, Jennifer uses her limited technology skills to share her material with her class.
