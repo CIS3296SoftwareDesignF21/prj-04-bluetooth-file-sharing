@@ -77,8 +77,7 @@ requires an Android device emulator or a physical device.
 
 # Personas
 
-## Persona 1 - Carl
-## Carl: an average, not so technically adept user
+## Persona 1 - Carl: an average, not so technically adept user
 
 Carl is a simple man who lives in a remote village without access to cellular or wireless internet access. He and everyone he knows uses bridgefy religiously, 
 as it's their only way to transfer files with the absence of other forms of telecommunication. Carl is a coal miner by trade, and his brother Tom is a 
