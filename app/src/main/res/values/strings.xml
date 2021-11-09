@@ -6,5 +6,9 @@
     <string name="loc_req_title">Location title required</string>
     <string name="loc_req_msg">Location permission required</string>
     <string name="okay">Okay</string>
+    <string name="already_started">already started</string>
+    <string name="data_too_large">advertising data too large</string>
+    <string name="not_supported">not supported</string>
+    <string name="inter_err">internal error</string>
 
 </resources>

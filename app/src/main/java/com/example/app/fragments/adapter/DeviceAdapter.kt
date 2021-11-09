@@ -23,6 +23,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
+import com.example.app.bluetooth.BluetoothGATT
 import com.example.app.databinding.DeviceViewHolderBinding
 
 
@@ -68,9 +69,20 @@ class DeviceAdapter : RecyclerView.Adapter<DeviceAdapter.ScanResultVh>() {
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: ScanResult?) {
             item?.let {
-                binding.deviceName.text = it.device.name
-                binding.deviceAddress.text = it.device.address
-                binding.lastSeen.text = (it.timestampNanos/1000000000).toString()
+                val device = it.device
+                binding.deviceName.text = device.name
+                binding.deviceAddress.text = device.address
+                binding.deviceCard.setOnClickListener{
+
+                    //Create connection
+                    BluetoothGATT.setCurrentChatConnection(device)
+
+                    //send message
+
+                    //merk connection
+
+
+                }
             }
         }
     }

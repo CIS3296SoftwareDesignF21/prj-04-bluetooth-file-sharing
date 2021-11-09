@@ -1,15 +1,13 @@
 
 ## Current State:
 
-**all source code is under cs3296-project/app/src/main/java/com/example/app/**
-
 **App UI**  
 Fragment and Adapter for simple recycle/scroll view. This is implemented via 'fragments/ScrollView.kt' and
 'fragments/adapter/DeviceAdapter.kt'
 
 **App Data**  
 ViewModel to pass data from bluetooth class to UI fragment, currently holds a list of all discovered nearby devices.
-This is implemented via 'viewModel.kt' which holds the BluetoothLiveData class.
+This is implemented via 'viewModel.kt' which hold the BluetoothLiveData class.
 
 **Bluetooth**  
 BluetoothLe scanner to get nearby devices. This is implemented in 'bluetooth/BluetoothController.kt'
