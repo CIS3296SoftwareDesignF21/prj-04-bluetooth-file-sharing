@@ -11,12 +11,12 @@
 
 #### Brock
 - Created Message sending screen
-- Updated Personas
+- 
 
 
 #### Caleb
 - Created package "messages" that contains message object that can be sent over bluetooth.
-- Edited Persona
+- Updated Personas
 
 
 #### Akshay
