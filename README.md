@@ -77,18 +77,25 @@ requires an Android device emulator or a physical device.
 
 # Personas
 
-## Persona 1 - Carl: an average, not so technically adept user - shares files quickly and easily
+## Persona 1 - Carl: an average, not so technically adept user - shares files without Wifi or cellular
 
 Carl is a simple man who lives in a remote village without access to cellular or wireless internet access. He and everyone he knows uses bridgefy religiously, 
 as it's their only way to transfer files with the absence of other forms of telecommunication. Carl is a coal miner by trade, and his brother Tom is a 
-construction worker. He has an Android phone but doesn't really know how to use it. He has a bare minimum understanding of technology; he knows how to take a 
-picture and open an app but that's about it. Carl wants to use Bridgefy to send pictures of his kids to his brother who lives a few miles away. Fortunately, 
-there are enough users between him and his brother to bridge the gap between them via multiple hops of bluetooth. 
+construction worker. Carl joined the work force out of high school and don't have any higher education. He tends to go into a nearby city to visit Tom and use the Wifi to connect with the outside world.
+
+Tom recently bought Carl an Android phone for his birthday.However, Carl doesn't really know how to use it.
+He has a bare minimum understanding of technology; he knows how to take a picture and open an app but that's about it. 
+Tom recently heard of Bridgefy and downloads it to Carl's phone. He explains that Bridgefy does not need Wifi or cellular to send messages.
+By using Bridgefy, one Carl and Tom can exchange messages by using a string of users.Carl now uses Bridgefy to send 
+pictures of his kids to his brother. Fortunately, there are enough users between him and his brother to bridge the gap between them via multiple hops of bluetooth. 
 
 ## Persona 2 - Tony: Introverted Student - mass communication at once
 
-Tony is a really shy student who knows how to use his phone and is on social media. Tony wants to have party 
-to become more popular, but he is afriad to invite his classmates face to face. So Tony uses the bluetooth sharing app
+Tony is a really shy student who knows how to use his phone and is on social media. Tony is in the 11th grade and tends to be good with technology.
+He is on many Discord servers, watching the latest tech news. He is an avid gamer and tends to maintain his contacts with people virtually. 
+Tony has always wanted to become more popular, and he notices that all the 
+
+Tony wants to have party to become more popular, but he is afriad to invite his classmates face to face. So Tony uses the bluetooth sharing app
 at school to send invitations to everyone there who also has the app. The invitation includes pictures and a message
 with details about the party for everyone to see. Everyone gets the invitation and thinks that Tony is so cool for using
 bluetooth to invite them that they all come. Tony becomes popular and gains confidence.
