@@ -6,7 +6,7 @@
 - Added fucntionality for sending and recieving packets over bluetooth 
 
 #### Zack
--
+- Created package storage that aloows access to access to files in an external storage
 
 
 #### Brock
@@ -15,8 +15,9 @@
 
 
 #### Caleb
--
+- Created package "messages" that contains message object that can be sent over bluetooth.
+- Edited Person
 
 
 #### Akshay
--
+- Edited Personas to meet standard described by Proffesor
