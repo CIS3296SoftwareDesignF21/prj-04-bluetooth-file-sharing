@@ -77,7 +77,7 @@ requires an Android device emulator or a physical device.
 
 # Personas
 
-## Persona 1 - Carl: an average, not so technically adept user
+## Persona 1 - Carl: an average, not so technically adept user - shares files quickly and easily
 
 Carl is a simple man who lives in a remote village without access to cellular or wireless internet access. He and everyone he knows uses bridgefy religiously, 
 as it's their only way to transfer files with the absence of other forms of telecommunication. Carl is a coal miner by trade, and his brother Tom is a 
@@ -85,7 +85,7 @@ construction worker. He has an Android phone but doesn't really know how to use 
 picture and open an app but that's about it. Carl wants to use Bridgefy to send pictures of his kids to his brother who lives a few miles away. Fortunately, 
 there are enough users between him and his brother to bridge the gap between them via multiple hops of bluetooth. 
 
-## Persona 2 - Tony: Introverted Student
+## Persona 2 - Tony: Introverted Student - mass communication at once
 
 Tony is a really shy student who knows how to use his phone and is on social media. Tony wants to have party 
 to become more popular, but he is afriad to invite his classmates face to face. So Tony uses the bluetooth sharing app
@@ -93,14 +93,14 @@ at school to send invitations to everyone there who also has the app. The invita
 with details about the party for everyone to see. Everyone gets the invitation and thinks that Tony is so cool for using
 bluetooth to invite them that they all come. Tony becomes popular and gains confidence.
 
-## Persona 3 - Peter: Picky Music Listener
+## Persona 3 - Peter: Picky Music Listener - bulk transfer
 
 Peter is definitely not an expert with technology, but he knows his way around his phone. He chooses to buy his music
 off the internet rather than pay for subscription services. He gets a new android phone and will like to transfer his 
 music library stored in a folder on his current android phone. He realized that using the Bridgefly app he can select
 all his old files and send them over to his new phone.
 
-## Persona 4 - Jennifer: An old-fashioned teacher who is too busy to stay on top of technology trends
+## Persona 4 - Jennifer: An old-fashioned teacher who is too busy to stay on top of technology trends - hold files for later use
 
 Jennifer is a 33 year old English high school teacher. She completed up through her bachelors in teaching and english while at Temple University in 2019. She knows very little about technology
 outside of laptop and word processor usage. She spends most of her time rigorously working on lesson plans and for her students and raising her new born child. She doesnt have time to keep
@@ -108,7 +108,7 @@ up to date with the newest technology or communication trends. Jennifer's curicu
 work. However, with COVID-19 still prevalent, she needs a paperless, reliable, and quick way to get handouts to her students in class on demand. As much as she was opposed to integrating online
 solutions into her line of work, Jennifer uses her limited technology skills to share her material with her class.
 
-## Persona 5 - Emma: A genius hacker 
+## Persona 5 - Emma: A genius hacker - untraceable communication
 
 Emma is a genius hacker who knows the ins and outs of every computer system on the planet. With a Masters in computer science and over 20 years of industry experience, she's the best of the best. After pulling off a multi-billion dollar digital heist, Emma has to meticulously cover her tracks. Determined to evade detection by the NSA and other government agencies, Emma turns to bridgefy to securely exfiltrate the stolen data to her accomplices. Bridgefy is the ideal solution to her problems, as it avoids common channels of communication that are more likely to be monitored by the people trying to catch her in the act.  
 
