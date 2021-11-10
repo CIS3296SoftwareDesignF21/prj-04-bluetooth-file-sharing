@@ -6,5 +6,8 @@
     <string name="loc_req_title">Location title required</string>
     <string name="loc_req_msg">Location permission required</string>
     <string name="okay">Okay</string>
+    <string name="sendInstructionsID">Please type whatever you want into the text box and hit send! End message with your</string>
+    <string name="messageBoxID">Type your message here!</string>
+    <string name="sendButtonID">Send</string>
 
 </resources>

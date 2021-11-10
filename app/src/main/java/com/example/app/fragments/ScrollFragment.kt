@@ -28,6 +28,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.app.BluetoothLiveData
 import com.example.app.LOCATION_FINE_PERM
 import com.example.app.PERMISSION_REQUEST_LOCATION
@@ -163,3 +164,12 @@ class ScrollFragment : Fragment() {
 
 }
 
+private fun View.setOnClickListener() {
+    TODO("Not yet implemented")
+    var t : Toast = Toast.makeText(this.context, "YESSSSSSSS", Toast.LENGTH_LONG)
+}
+
+private fun RecyclerView.setOnClickListener() {
+    TODO("Not yet implemented")
+    var t : Toast = Toast.makeText(this.context, "YESSSSSSSS", Toast.LENGTH_LONG)
+}
