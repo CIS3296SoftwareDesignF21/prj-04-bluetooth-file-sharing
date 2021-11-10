@@ -40,13 +40,13 @@ complexity.
 - More complex user interface
  
 ##  Vision statement
-FOR people without reliable internet or want a way to transfer files without WiFi/cell service WHO need a way to quickly and 
-reliably transfer files to near-by recipients, THE (name TBD) mobile app is a bluetooth driven Android app
-THAT sets up a file sharing network from one phone to others, potentially routing through multiple devices running the app.
+FOR teachers, people without reliable internet, communicator, and more WHO need a way to quickly and 
+reliably transfer files to near-by recipients, THE Fileshare mobile app is a bluetooth driven app
+THAT sets up a file sharing network from one phone to others via bluetooth.
 
-UNLIKE other Bluetooth file transfer solutions, users can choose to directly transfer files to a targeted device so that the files aren't available to 
-everyone. Also unlike other solutions, our app can transfer files/messages through other devices running the app, leading to a wider area of service. All of this put together creates a robust, secure file sharing channel. OUR app allows for simple file
-transfer between expecting parties who need the data quickly, with a wide physical range of service.
+UNLIKE Android Nearby Share, users can choose to listen in so that the files arent available to 
+everyone. This leads to a pseudo-community-privacy file share channel. OUR app allows for simple file
+transfer between expecting parties who need the data quickly.
 
 ##  Feature list
 * Two screen UI
@@ -117,21 +117,18 @@ making his setup process hassle free.
 
 ## Persona 4 - Jennifer: An old-fashioned teacher who is too busy to stay on top of technology trends - hold files for later use
 
-Jennifer is a 33 year old English high school teacher. She completed up through her bachelors in teaching and english while at Temple University in 2019. She knows very little about technology
-outside of laptop and word processor usage. She spends most of her time rigorously working on lesson plans and for her students and raising her new born child. She doesnt have time to keep
-up to date with the newest technology or communication trends. Jennifer's curiculum involve various handouts, worksheets, and quizes.She has never been one for accepting change in her line of
-work. However, with COVID-19 still prevalent, she needs a paperless, reliable, and quick way to get handouts to her students in class on demand. As much as she was opposed to integrating online
-solutions into her line of work, Jennifer uses her limited technology skills to share her material with her class.
+Jennifer is a 26 year old English high school teacher. She completed up through her bachelors in teaching and english
+while at Temple University in 2019. She  She knows very little about technology outside of laptop and word processor usage. 
+She spends most of her time rigorously working on lesson plans and for her students and raising her new born child. 
+She doesnt have time to keep up to date with the newest technology or communication trends. 
+
+Jennifer's curiculum involve various handouts, worksheets, and quizes. She has never been one for accepting change in her line of
+work. However, with COVID-19 still prevalent, she needs a paperless, reliable, and quick way to get handouts to her students in class on demand.
+As much as she was opposed to integrating onlinesolutions into her line of work, Jennifer uses her limited technology skills to share her material with her class. She needs her students to be able to retain the wokrsheets so they can send it back. Bridgefy allows for this by storing her worksheets so the students cna access them later on, or send them back to her too. 
 
 ## Persona 5 - Emma: A genius hacker - untraceable communication
 
-Emma is a genius hacker who knows the ins and outs of every computer system on the planet. With a Masters in computer science and over 20 years of industry experience, she's the best of the best. After pulling off a multi-billion dollar digital heist, Emma has to meticulously cover her tracks. Determined to evade detection by the NSA and other government agencies, Emma turns to bridgefy to securely exfiltrate the stolen data to her accomplices. Bridgefy is the ideal solution to her problems, as it avoids common channels of communication that are more likely to be monitored by the people trying to catch her in the act.  
+Emma is a genius hacker who knows the ins and outs of every computer system on the planet. With a Masters in computer science at UPenn and over 20 years of industry experience, she's the best of the best. Emma had been losing money to her gambling problem, so she had to find a way to get money really quick. Shr does some scouting and finds an up-and-coming company who has billions of dollars worth of data. She finds a security problem in their system and creates her master plan. Once she pulls it off,
+she can sell it to the highest bidder and would have more money than she could ever spend. 
 
-## Persona 6 - Luis: Aspiring Artist
-
-Luis is a 21 year old living in the city. He's quite adept with technology.
-He won't ever be found without her android phone or computer. Often, in his spare time, 
-he is making music on her computer and recording vocals on his phone.
-When he finishes making songs he often sends them to his friends and family as a 
-trial run using Bridgefy. Bridgefy allows him to easily market himself by sending him 
-songs to everyone he knows. It is the key to making him a star.
+After pulling off a multi-billion dollar digital heist, Emma has to meticulously cover her tracks. Determined to evade detection by the NSA and other government agencies, Emma turns to bridgefy to securely exfiltrate the stolen data to her buyers. Bridgefy is the ideal solution to her problems, as it avoids common channels of communication that are more likely to be monitored by the people trying to catch her in the act. With no one knowing who she is or where the communication is going to, she can easily avoid detection. Now she can live worry-free with all her money.
