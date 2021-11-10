@@ -40,13 +40,13 @@ complexity.
 - More complex user interface
  
 ##  Vision statement
-FOR teachers, people without reliable internet, communicator, and more WHO need a way to quickly and 
-reliably transfer files to near-by recipients, THE Fileshare mobile app is a bluetooth driven app
-THAT sets up a file sharing network from one phone to others via bluetooth.
+FOR people without reliable internet or want a way to transfer files without WiFi/cell service WHO need a way to quickly and 
+reliably transfer files to near-by recipients, THE (name TBD) mobile app is a bluetooth driven Android app
+THAT sets up a file sharing network from one phone to others, potentially routing through multiple devices running the app.
 
-UNLIKE Android Nearby Share, users can choose to listen in so that the files arent available to 
-everyone. This leads to a pseudo-community-privacy file share channel. OUR app allows for simple file
-transfer between expecting parties who need the data quickly.
+UNLIKE other Bluetooth file transfer solutions, users can choose to directly transfer files to a targeted device so that the files aren't available to 
+everyone. Also unlike other solutions, our app can transfer files/messages through other devices running the app, leading to a wider area of service. All of this put together creates a robust, secure file sharing channel. OUR app allows for simple file
+transfer between expecting parties who need the data quickly, with a wide physical range of service.
 
 ##  Feature list
 * Two screen UI
