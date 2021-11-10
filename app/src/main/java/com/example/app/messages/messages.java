@@ -5,7 +5,7 @@ import androidx.annotation.RequiresApi;
 
 import java.util.Objects;
 
-public class messages {
+public class messages{
 
 
     public String text;//realy just a stand in for the name of anything recieved over bluetooth
@@ -13,6 +13,7 @@ public class messages {
     public String target;//id of device sending the packet
     public String FileType;
     public int timeRecievd;
+    //public int sizeMem; //reffering to the messages size in memory
     //message object will be sent over bT impl
 
     public messages(String text, String sender, String target, int timeRecievd, String FileType){
