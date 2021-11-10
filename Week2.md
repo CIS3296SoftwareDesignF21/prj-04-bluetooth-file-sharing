@@ -7,7 +7,7 @@
 
 #### Zack
 - Created package storage that aloows access to access to files in an external storage
-
+- Rewrote the vision statement to reflect feedback given
 
 #### Brock
 - Created Message sending screen
