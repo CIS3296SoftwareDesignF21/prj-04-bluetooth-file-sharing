@@ -115,7 +115,7 @@ going into his music library and then doing the same before finaly repeating wit
 like to send over to his new phone, Peter can use the app's ability to send multiple files of different types all at once
 making his setup process hassle free.
 
-## Persona 4 - Jennifer: An old-fashioned teacher who is too busy to stay on top of technology trends - hold files for later use
+## Persona 4 - Jennifer: An old-fashioned teacher - hold files for later use
 
 Jennifer is a 26 year old English high school teacher. She completed up through her bachelors in teaching and english
 while at Temple University in 2019. She  She knows very little about technology outside of laptop and word processor usage. 
