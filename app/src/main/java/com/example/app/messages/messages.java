@@ -60,6 +60,10 @@ public class messages{
         return Objects.hash(text, sender, target, FileType, timeRecievd);
     }
 
+    //next add a comparator so sorting with arrays is mad easy
+    //with CComparator you can compare by different factors
+    //comparable sets a default item to compare by and may be required by soring functions of other data types
+
 
 
 }
