@@ -16,7 +16,7 @@
 
 #### Caleb
 - Created package "messages" that contains message object that can be sent over bluetooth.
-- Edited Person
+- Edited Persona
 
 
 #### Akshay
