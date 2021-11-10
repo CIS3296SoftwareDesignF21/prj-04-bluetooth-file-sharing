@@ -93,12 +93,20 @@ at school to send invitations to everyone there who also has the app. The invita
 with details about the party for everyone to see. Everyone gets the invitation and thinks that Tony is so cool for using
 bluetooth to invite them that they all come. Tony becomes popular and gains confidence.
 
-## Persona 3 - Peter: Picky Music Listener - bulk transfer
+## Persona 3 - Peter: Setting Up A New Phone - bulk transfer
 
-Peter is definitely not an expert with technology, but he knows his way around his phone. He chooses to buy his music
-off the internet rather than pay for subscription services. He gets a new android phone and will like to transfer his 
-music library stored in a folder on his current android phone. He realized that using the Bridgefly app he can select
-all his old files and send them over to his new phone.
+Peter is definitely not an expert with technology, but he knows his way around his phone. He works as a construction manager of his own company, 
+and a bachelor's in finance. He chooses to buy his music off the internet rather than pay for subscription services. 
+He gets a new android phone and would like to transfer his music library stored in a folder on his current android phone. 
+Peter has also used his phone as his general purpose storage device over the years and would like to tranfer in bulk, files of different types. 
+He realized that using the Bluetooth File tranfer app he can select all his old files and send them over to his new phone.
+
+Why this option is particulary of interest to Peter is that his current phone is not a newer one that supports quick 
+setup processes over mobile date or WiFi, so his options are limited. Thanks to our Bluetooth File Tranfer App, there is
+an easy solution for that. Rather than sending files by first going into the Gallery, sending over bluetooth, then 
+going into his music library and then doing the same before finaly repeating with his videos or any other files he will
+like to send over to his new phone, Peter can use the app's ability to send multiple files of different types all at once
+making his setup process hassle free.
 
 ## Persona 4 - Jennifer: An old-fashioned teacher who is too busy to stay on top of technology trends - hold files for later use
 
