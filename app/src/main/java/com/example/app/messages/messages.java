@@ -3,9 +3,11 @@ package com.example.app.messages;
 import android.os.Build;
 import androidx.annotation.RequiresApi;
 
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.Objects;
 
-public class messages{
+public class messages {//message object will be sent over bT impl
 
 
     public String text;//realy just a stand in for the name of anything recieved over bluetooth
@@ -13,15 +15,16 @@ public class messages{
     public String target;//id of device sending the packet
     public String FileType;
     public int timeRecievd;
-    //public int sizeMem; //reffering to the messages size in memory
-    //message object will be sent over bT impl
+    public int sizeInMem; //reffering to the messages size in memory
 
-    public messages(String text, String sender, String target, int timeRecievd, String FileType){
+
+    public messages(String text, String sender, String target, int timeRecievd, String FileType, int sizeInMem){
         this.text = text;
         this.sender = sender;
         this.target = target;
         this.FileType = FileType;
         this.timeRecievd = timeRecievd;
+        this.sizeInMem = sizeInMem;
     }
 
     public boolean arrivedBefore(messages B){//returns true if the Recived Time of the current message is less than the
@@ -45,6 +48,8 @@ public class messages{
                 '}';
     }
 
+
+
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public boolean equals(Object o) {
@@ -59,6 +64,7 @@ public class messages{
     public int hashCode() {
         return Objects.hash(text, sender, target, FileType, timeRecievd);
     }
+
 
     //next add a comparator so sorting with arrays is mad easy
     //with CComparator you can compare by different factors
