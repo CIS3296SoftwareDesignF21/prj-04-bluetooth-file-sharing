@@ -6,6 +6,11 @@
         <entry key="..\:/Users/Brock/StudioProjects/prj-04-bluetooth-file-sharing/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Brock/StudioProjects/prj-04-bluetooth-file-sharing/app/src/main/res/layout/fragment_scroll.xml" value="0.17753623188405798" />
         <entry key="..\:/Users/Brock/StudioProjects/prj-04-bluetooth-file-sharing/app/src/main/res/layout/fragment_send.xml" value="0.25416666666666665" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1625" />
+        <entry key="app/src/main/res/layout/device_view_holder.xml" value="0.2874873353596758" />
+        <entry key="app/src/main/res/layout/fragment_scroll.xml" value="0.1625" />
+        <entry key="app/src/main/res/layout/fragment_send.xml" value="0.1625" />
+        <entry key="app/src/main/res/layout/settings_button.xml" value="0.1625" />
       </map>
     </option>
   </component>
@@ -17,5 +22,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.1625" />
+      </ProjectState>
+    </option>
   </component>
 </project>
