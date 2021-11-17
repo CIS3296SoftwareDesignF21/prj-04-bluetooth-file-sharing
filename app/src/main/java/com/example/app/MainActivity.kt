@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         //hides action bar
         supportActionBar!!.hide()
-
+        //var refScrollFragment : ScrollFragment = ScrollFragment().newInstance()
         //gets view binding
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
