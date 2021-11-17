@@ -10,18 +10,25 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
+import androidx.fragment.app.replace
+import androidx.lifecycle.Observer
 import com.example.app.bluetooth.BluetoothScanner
 import com.example.app.bluetooth.BluetoothGATT
+import com.example.app.bluetooth.data.ConnectionLiveData
+import com.example.app.bluetooth.data.ScanLiveData
 import com.example.app.databinding.ActivityMainBinding
-import com.example.app.fragments.ScrollFragment
+import com.example.app.fragments.*
+import com.example.app.fragments.data.SharedFragmentViewModel
 
 @RequiresApi(Build.VERSION_CODES.M)
 //@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel: BluetoothLiveData by viewModels()
-    private lateinit var btScanner: BluetoothScanner
+    private val sharedViewModel : SharedFragmentViewModel by viewModels()
+    private val serverViewModel: ConnectionLiveData by viewModels()
+    private val scanData : ScanLiveData by viewModels()
 
+    private lateinit var btScanner: BluetoothScanner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,21 +41,66 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         /*create an instance of BluetoothManager and initialize*/
-        btScanner= BluetoothScanner(this,viewModel)
+        btScanner= BluetoothScanner(this,scanData)
         btScanner.initialize()
 
+        BluetoothGATT.init(application, serverViewModel)
+
         //sets initial fragment
-        if (savedInstanceState == null) {
-            supportFragmentManager.commit {
-                setReorderingAllowed(true)
-                add<ScrollFragment>(R.id.fragment_container)
-            }
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            add<ScanFragment>(R.id.fragment_container)
         }
 
-        binding.fab.setOnClickListener {
-            if (BluetoothGATT.connectionState.value == true) {
-                BluetoothGATT.sendMessage(" This is an official test message")
+        sharedViewModel.screen.observe(this, Observer { curScreen ->
+            // Perform an action with the latest item data
+
+            when(curScreen) {
+                0 -> {
+                    supportFragmentManager.commit {
+                        setReorderingAllowed(true)
+                        replace<ScanFragment>(R.id.fragment_container)
+                    }
+                }
+                1 -> {
+                    supportFragmentManager.commit {
+                        setReorderingAllowed(true)
+                        replace<SendFragment>(R.id.fragment_container)
+                    }
+
+                }
+                2 -> {
+                    supportFragmentManager.commit {
+                        setReorderingAllowed(true)
+                        replace<SettingFragment>(R.id.fragment_container)
+                    }
+
+                }
+                3 -> {
+                    supportFragmentManager.commit {
+                        setReorderingAllowed(true)
+                        replace<ClientFragment>(R.id.fragment_container)
+                    }
+                }
+                else -> {}
             }
+
+
+
+        })
+
+
+
+        binding.fab.setOnClickListener {
+
+            sharedViewModel.setSend()
+
+        }
+
+        binding.settings.setOnClickListener{
+
+            sharedViewModel.setSettings()
+
         }
 
     }
@@ -106,7 +158,7 @@ class MainActivity : AppCompatActivity() {
             PERMISSION_REQUEST_LOCATION -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     btScanner.startScanning()
-                    BluetoothGATT.startServer(application, viewModel)
+                    BluetoothGATT.startServer()
                 }
             }
             else -> Toast.makeText(

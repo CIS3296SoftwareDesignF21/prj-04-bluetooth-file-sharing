@@ -26,23 +26,26 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.app.BluetoothLiveData
-import com.example.app.bluetooth.BluetoothGATT
+import com.example.app.bluetooth.data.ConnectionLiveData
+import com.example.app.bluetooth.data.ScanLiveData
 import com.example.app.fragments.adapter.DeviceAdapter
 import com.example.app.databinding.FragmentScrollBinding
+import com.example.app.fragments.data.SharedFragmentViewModel
 
 
 /**
  * Displays remote nearby bluetooth devices via recycle viewer
  */
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-class ScrollFragment : Fragment() {
+class ScanFragment : Fragment() {
 
     private lateinit var binding: FragmentScrollBinding
     private lateinit var scannerAdapter: DeviceAdapter
 
     /*get reference to the viewModel that will hold BluetoothLiveData*/
-    private val viewModel: BluetoothLiveData by activityViewModels()
+    private val scanData: ScanLiveData by activityViewModels()
+    private val serverViewModel: ConnectionLiveData by activityViewModels()
+    val sharedViewModel : SharedFragmentViewModel by activityViewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,7 +72,6 @@ class ScrollFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         /*setup recycle view*/
         setupRecyclerViewAdapter()
 
@@ -79,27 +81,14 @@ class ScrollFragment : Fragment() {
             scannerAdapter.updateView(results)
         }
 
-        /*create listener to scan result data*/
-        val message = Observer<String> { message ->
-            /*this calls the recycle view adapter to update our list*/
-            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-        }
-
-        val myMessage = Observer<String> {message ->
-            /*this calls the recycle view adapter to update our list*/
-            Toast.makeText(context, "Just sent: " + message, Toast.LENGTH_SHORT).show()
-        }
-
         val connected = Observer<Boolean> {
             connected -> if (connected == true) { Toast.makeText(context, "Officially connected", Toast.LENGTH_SHORT).show() }
             else {Toast.makeText(context, "Connection Broken", Toast.LENGTH_SHORT).show()}
         }
-        /*tell our observers to start observing*/
-        viewModel.mutableDeviceListLiveData.observe(viewLifecycleOwner, results)
-        BluetoothGATT.messageRemoteLiveData.observe(viewLifecycleOwner, message)
-        BluetoothGATT.messageLiveData.observe(viewLifecycleOwner, myMessage)
-        BluetoothGATT.connectionState.observe(viewLifecycleOwner, connected)
 
+        /*tell our observers to start observing*/
+        scanData.mutableDeviceListLiveData.observe(viewLifecycleOwner, results)
+        serverViewModel.connectionState.observe(viewLifecycleOwner, connected)
 
     }
 
@@ -109,7 +98,7 @@ class ScrollFragment : Fragment() {
     * it also creates an instance of our DeviceAdapter class to use with the recycle view.
     */
     private fun setupRecyclerViewAdapter() {
-        scannerAdapter = DeviceAdapter()
+        scannerAdapter = DeviceAdapter(sharedViewModel)
         with(binding.recyclerView) {
             layoutManager = LinearLayoutManager(requireContext())
             this.adapter = scannerAdapter

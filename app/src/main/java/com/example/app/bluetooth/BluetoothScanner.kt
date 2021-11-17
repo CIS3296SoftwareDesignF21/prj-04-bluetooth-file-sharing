@@ -11,10 +11,12 @@ import android.os.ParcelUuid
 import android.util.Log
 import androidx.annotation.RequiresApi
 import com.example.app.*
+import com.example.app.bluetooth.data.ConnectionLiveData
+import com.example.app.bluetooth.data.ScanLiveData
 
 
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-class BluetoothScanner(private val context: Context, private val viewModel : BluetoothLiveData) {
+class BluetoothScanner(private val context: Context, private val viewModel : ScanLiveData) {
 
     private var bluetoothLeScanner: BluetoothLeScanner? = null
     private lateinit var bluetoothAdapter: BluetoothAdapter
@@ -91,12 +93,12 @@ class BluetoothScanner(private val context: Context, private val viewModel : Blu
     inner class SampleScanCallback() : ScanCallback() {
 
         /*onBatchScanResults passes all results to our viewModel via setItems method*/
-        override fun onBatchScanResults(results: MutableList<ScanResult>?) {
-            super.onBatchScanResults(results)
-            Log.d(CONTROLLER_TAG, "onBatchScanResults size: ${results?.size}")
-
-            results?.let { viewModel.setScanItems(it) }
-        }
+//        override fun onBatchScanResults(results: MutableList<ScanResult>?) {
+//            super.onBatchScanResults(results)
+//            Log.d(CONTROLLER_TAG, "onBatchScanResults size: ${results?.size}")
+//
+//            results?.let { viewModel.setScanItems(it) }
+//        }
 
         /*onScanResults passes one result to our viewModel via addSingleItems method*/
         override fun onScanResult(callbackType: Int, result: ScanResult) {

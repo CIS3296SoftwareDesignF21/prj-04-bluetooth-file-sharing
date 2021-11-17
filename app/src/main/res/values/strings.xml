@@ -10,5 +10,8 @@
     <string name="data_too_large">advertising data too large</string>
     <string name="not_supported">not supported</string>
     <string name="inter_err">internal error</string>
+    <string name="messageBoxID">message box</string>
+    <string name="sendButtonID">Send</string>
+    <string name="sendInstructionsID">Send Instructions</string>
 
 </resources>

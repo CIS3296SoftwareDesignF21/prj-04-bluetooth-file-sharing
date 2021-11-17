@@ -7,22 +7,20 @@ import android.bluetooth.BluetoothDevice
 const val LOCATION_FINE_PERM = Manifest.permission.ACCESS_FINE_LOCATION
 const val PERMISSION_REQUEST_LOCATION = 101
 const val SCAN_PERIOD_IN_MILLIS: Long = 90_000
-const val ADVERTISE_PERIOD_IN_MILLIS: Long = 90_000
-const val DEVICE_NAME = "test_device"
 
 
 /*Class TAGs*/
-const val COM_TAG = "BluetoothCom"
 const val CONTROLLER_TAG = "BluetoothScanner"
 const val DATA_TAG = "BluetoothLiveData"
 const val AD_TAG = "BluetoothAdvertiser"
+const val GATT_TAG = "BluetoothGATT"
+const val CLIENT_TAG = "BluetoothClient"
 
 
 /*Channel Connection States*/
-const val IDLE = 0
-const val AWAITING = 1
-const val CONNECTING = 2
-const val CONNECTED = 3
+const val SERVER = 0
+const val CLIENT = 1
+
 
 /**
  * Constants for use in the Bluetooth LE Chat sample

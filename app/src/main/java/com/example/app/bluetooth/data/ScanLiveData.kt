@@ -1,34 +1,30 @@
-package com.example.app
+package com.example.app.bluetooth.data
 
-import android.bluetooth.BluetoothDevice
 import android.bluetooth.le.ScanResult
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.app.DATA_TAG
 
 
-/*
- * BluetoothLiveData this class is a little confusing
- */
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-class BluetoothLiveData(): ViewModel() {
+class ScanLiveData: ViewModel() {
 
     //Device Lists Live Data
     private var mutableDeviceList: MutableList<ScanResult> = arrayListOf()
     val mutableDeviceListLiveData = MutableLiveData<MutableList<ScanResult>>()
 
 
-    fun setScanItems(mutableList: MutableList<ScanResult>) {
-        if (mutableList != mutableDeviceList) {
-
-            mutableDeviceList = mutableList
-
-            mutableDeviceListLiveData.value = mutableDeviceList
-        }
-    }
+//    fun setScanItems(mutableList: MutableList<ScanResult>) {
+//        if (mutableList != mutableDeviceList) {
+//
+//            mutableDeviceList = mutableList
+//
+//            mutableDeviceListLiveData.value = mutableDeviceList
+//        }
+//    }
 
     fun addSingleScanItem(item: ScanResult) {
         /**
@@ -46,6 +42,4 @@ class BluetoothLiveData(): ViewModel() {
 
         mutableDeviceListLiveData.value = mutableDeviceList
     }
-
-
 }

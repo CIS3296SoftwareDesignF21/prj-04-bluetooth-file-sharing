@@ -23,15 +23,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
-import com.example.app.bluetooth.BluetoothGATT
 import com.example.app.databinding.DeviceViewHolderBinding
+import com.example.app.fragments.data.SharedFragmentViewModel
 
 
 /**
  * Adapter for displaying remote Bluetooth devices that are being advertised
  */
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-class DeviceAdapter : RecyclerView.Adapter<DeviceAdapter.ScanResultVh>() {
+class DeviceAdapter(val sharedView: SharedFragmentViewModel) : RecyclerView.Adapter<DeviceAdapter.ScanResultVh>() {
 
     val TAG = "ScannerAdapter"
 
@@ -67,6 +67,7 @@ class DeviceAdapter : RecyclerView.Adapter<DeviceAdapter.ScanResultVh>() {
 
     inner class ScanResultVh(private val binding: DeviceViewHolderBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
         fun bind(item: ScanResult?) {
             item?.let {
                 val device = it.device
@@ -74,17 +75,12 @@ class DeviceAdapter : RecyclerView.Adapter<DeviceAdapter.ScanResultVh>() {
                 binding.deviceAddress.text = device.address
                 binding.deviceCard.setOnClickListener{
 
-                    //Create connection
-                    BluetoothGATT.setCurrentChatConnection(device)
-
-                    //send message
-
-                    //merk connection
-
+                    sharedView.setClient(device)
 
                 }
             }
         }
+
     }
 
 
