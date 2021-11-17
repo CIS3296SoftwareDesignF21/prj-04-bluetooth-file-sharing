@@ -19,6 +19,7 @@ package com.example.app.fragments
 import android.bluetooth.le.ScanResult
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -44,6 +45,14 @@ class ScrollFragment : Fragment() {
     /*get reference to the viewModel that will hold BluetoothLiveData*/
     private val viewModel: BluetoothLiveData by activityViewModels()
 
+
+    fun newInstance():  ScrollFragment{
+        val args = Bundle()
+
+        val fragment = (this)
+        fragment.arguments = args
+        return fragment
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,7 +87,6 @@ class ScrollFragment : Fragment() {
             /*this calls the recycle view adapter to update our list*/
             scannerAdapter.updateView(results)
         }
-
         /*create listener to scan result data*/
         val message = Observer<String> { message ->
             /*this calls the recycle view adapter to update our list*/
