@@ -22,8 +22,6 @@ class BluetoothScanner(private val context: Context, private val viewModel : Sca
     private lateinit var bluetoothAdapter: BluetoothAdapter
     private val ScanFilterService_UUID : ParcelUuid = ParcelUuid(SERVICE_UUID)
 
-
-    private var handler: Handler? = null
     private var scanCallback: ScanCallback? = null
 
 
@@ -38,7 +36,6 @@ class BluetoothScanner(private val context: Context, private val viewModel : Sca
             bluetoothLeScanner = bluetoothAdapter.bluetoothLeScanner
         }
 
-        handler = Handler(Looper.myLooper()!!)
     }
 
     /*
@@ -53,7 +50,6 @@ class BluetoothScanner(private val context: Context, private val viewModel : Sca
             Log.d(CONTROLLER_TAG, "startScanning: already scanning")
             return
         }
-        handler?.postDelayed({ stopScanning() }, SCAN_PERIOD_IN_MILLIS)
         scanCallback = SampleScanCallback()
         bluetoothLeScanner?.startScan(buildScanFilters(), buildScanSettings(), scanCallback)
     }
@@ -62,7 +58,7 @@ class BluetoothScanner(private val context: Context, private val viewModel : Sca
     /*
     * Stops scanning
     */
-    private fun stopScanning() {
+    fun stopScanning() {
         Log.d(CONTROLLER_TAG, "stopScanning")
         bluetoothLeScanner?.stopScan(scanCallback)
         scanCallback = null

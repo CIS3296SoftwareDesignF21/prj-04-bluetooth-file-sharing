@@ -29,28 +29,6 @@ class BluetoothClient(val connectionLiveData : ConnectionLiveData, val app : App
             gattClient = device.connectGatt(app, false, gattClientCallback)
     }
 
-//    fun sendMessage(message: String): Boolean {
-//        Log.d(GATT_TAG, "Send a message")
-//
-//        messageCharacteristic?.let { characteristic ->
-//            characteristic.writeType = BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
-//
-//            val messageBytes = message.toByteArray(Charsets.UTF_8)
-//            characteristic.value = messageBytes
-//
-//            gattClient?.let {
-//                val success = it.writeCharacteristic(messageCharacteristic)
-//                Log.d(GATT_TAG, "onServicesDiscovered: message send: $success")
-//
-//            } ?: run {
-//                Log.d(GATT_TAG, "sendMessage: no gatt connection to send a message with")
-//            }
-//
-//        } ?: run {
-//            Log.d(GATT_TAG, "sendMessage: no message characteristic found")
-//        }
-//        return false
-//    }
 
     private inner class GattClientCallback : BluetoothGattCallback() {
         override fun onConnectionStateChange(gatt: BluetoothGatt, status: Int, newState: Int) {
@@ -73,15 +51,12 @@ class BluetoothClient(val connectionLiveData : ConnectionLiveData, val app : App
                 Log.d(CLIENT_TAG, "onServicesDiscovered: Have gatt $discoveredGatt")
                 val service = discoveredGatt.getService(SERVICE_UUID)
                 messageCharacteristic = service.getCharacteristic(MESSAGE_UUID)
+                discoveredGatt.setCharacteristicNotification(messageCharacteristic,true)
             }
         }
 
-        override fun onCharacteristicWrite(
-            gatt: BluetoothGatt?,
-            characteristic: BluetoothGattCharacteristic?,
-            status: Int
-        ) {
-            super.onCharacteristicWrite(gatt, characteristic, status)
+        override fun onCharacteristicChanged(gatt: BluetoothGatt?, characteristic: BluetoothGattCharacteristic?) {
+            super.onCharacteristicChanged(gatt, characteristic)
             if (characteristic?.uuid == MESSAGE_UUID) {
 
                 val message = characteristic?.value.toString(Charsets.UTF_8)
@@ -95,4 +70,5 @@ class BluetoothClient(val connectionLiveData : ConnectionLiveData, val app : App
 
         }
     }
+
 }

@@ -17,15 +17,6 @@ class ScanLiveData: ViewModel() {
     val mutableDeviceListLiveData = MutableLiveData<MutableList<ScanResult>>()
 
 
-//    fun setScanItems(mutableList: MutableList<ScanResult>) {
-//        if (mutableList != mutableDeviceList) {
-//
-//            mutableDeviceList = mutableList
-//
-//            mutableDeviceListLiveData.value = mutableDeviceList
-//        }
-//    }
-
     fun addSingleScanItem(item: ScanResult) {
         /**
          * In this particular case the data coming in may be duplicate. So check that only unique

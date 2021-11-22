@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BT_Scanner</string>
+    <string name="app_name">Post</string>
     <string name="submit">create</string>
     <string name="bt_scanning">Scanning...</string>
     <string name="loc_req_denied_msg">Location permission denied</string>

@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         //hides action bar
         supportActionBar!!.hide()
-        //var refScrollFragment : ScrollFragment = ScrollFragment().newInstance()
+
         //gets view binding
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -53,8 +53,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         sharedViewModel.screen.observe(this, Observer { curScreen ->
-            // Perform an action with the latest item data
 
+            // Perform an action with the latest item data
             when(curScreen) {
                 0 -> {
                     supportFragmentManager.commit {
@@ -67,14 +67,12 @@ class MainActivity : AppCompatActivity() {
                         setReorderingAllowed(true)
                         replace<SendFragment>(R.id.fragment_container)
                     }
-
                 }
                 2 -> {
                     supportFragmentManager.commit {
                         setReorderingAllowed(true)
                         replace<SettingFragment>(R.id.fragment_container)
                     }
-
                 }
                 3 -> {
                     supportFragmentManager.commit {
@@ -114,7 +112,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-
+        btScanner.stopScanning()
         BluetoothGATT.stopServer()
     }
 

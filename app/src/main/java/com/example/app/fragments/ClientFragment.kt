@@ -1,12 +1,13 @@
 package com.example.app.fragments
 
-import android.app.Application
 import android.bluetooth.BluetoothDevice
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -27,15 +28,13 @@ import com.example.app.fragments.data.SharedFragmentViewModel
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 class ClientFragment : Fragment() {
 
-    val sharedViewModel : SharedFragmentViewModel by activityViewModels()
+    private val sharedViewModel : SharedFragmentViewModel by activityViewModels()
 
     private val clientViewModel : ConnectionLiveData by viewModels()
 
     private lateinit var binding: FragmentClientBinding
 
-    private val app = requireContext().applicationContext as Application
-
-    private val btClient : BluetoothClient = BluetoothClient(clientViewModel,app)
+    private lateinit var btClient : BluetoothClient
 
     private lateinit var displayDevice : BluetoothDevice
 
@@ -44,7 +43,14 @@ class ClientFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
 
+        val app = requireActivity().application
+
+        btClient = BluetoothClient(clientViewModel,app)
+
         displayDevice = sharedViewModel.connection!!.value!!
+
+        val deviceName = displayDevice.name
+        Log.d("ClientFragment", "device: $deviceName")
 
         btClient.connectToDevice(displayDevice)
 
@@ -63,7 +69,6 @@ class ClientFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         binding.deviceTitle.text = displayDevice.name
-
         binding.messageBox.text = messageList
 
         val message = Observer<String> {
@@ -74,9 +79,14 @@ class ClientFragment : Fragment() {
 
         }
 
+        val connected = Observer<Boolean> {
+                connected -> if (connected == true) { Toast.makeText(context, "Officially connected", Toast.LENGTH_SHORT).show() }
+        else {Toast.makeText(context, "Connection Broken", Toast.LENGTH_SHORT).show()}
+        }
+
         /*tell our observer to start observing*/
         clientViewModel.messageRemoteLiveData.observe(viewLifecycleOwner, message)
-
+        clientViewModel.connectionState.observe(viewLifecycleOwner, connected)
 
     }
 

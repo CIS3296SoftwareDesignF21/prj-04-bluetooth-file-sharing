@@ -62,6 +62,9 @@ object BluetoothGATT {
     fun postMessage(message: String) {
         Log.d(GATT_TAG, "Send a message")
 
+        messageCharacteristic = gattServer?.getService(SERVICE_UUID)?.getCharacteristic(MESSAGE_UUID)
+
+
         messageCharacteristic?.let { characteristic ->
 
             characteristic.writeType = BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
@@ -102,7 +105,6 @@ object BluetoothGATT {
             addService(setupGattService())
         }
 
-        messageCharacteristic = gattServer?.getService(SERVICE_UUID)?.getCharacteristic(MESSAGE_UUID)
     }
 
     /**
@@ -114,12 +116,12 @@ object BluetoothGATT {
         val service = BluetoothGattService(SERVICE_UUID, BluetoothGattService.SERVICE_TYPE_PRIMARY)
 
         // need to ensure that the property is writable and has the write permission
-        val outMessageCharacteristic = BluetoothGattCharacteristic(
+        val messageCharacteristic = BluetoothGattCharacteristic(
             MESSAGE_UUID,
             BluetoothGattCharacteristic.PROPERTY_WRITE,
             BluetoothGattCharacteristic.PERMISSION_WRITE
         )
-        service.addCharacteristic(outMessageCharacteristic)
+        service.addCharacteristic(messageCharacteristic)
 
 
         return service
@@ -154,29 +156,6 @@ object BluetoothGATT {
             }
         }
 
-//        override fun onCharacteristicWriteRequest(
-//            device: BluetoothDevice,
-//            requestId: Int,
-//            characteristic: BluetoothGattCharacteristic,
-//            preparedWrite: Boolean,
-//            responseNeeded: Boolean,
-//            offset: Int,
-//            value: ByteArray?
-//        ) {
-//            super.onCharacteristicWriteRequest(device, requestId, characteristic, preparedWrite, responseNeeded, offset, value)
-//            if (characteristic.uuid == MESSAGE_UUID) {
-//
-//                gattServer?.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, 0, null)
-//
-//                val message = value?.toString(Charsets.UTF_8)
-//
-//                Log.d(GATT_TAG, "onCharacteristicWriteRequest: Have message: \"$message\"")
-//
-//                message?.let {
-//                    connectionLiveData.setRemoteMessage(it)
-//                }
-//            }
-//        }
     }
 
 }
