@@ -1,10 +1,11 @@
 package com.example.app.messages;
 
+import java.io.File;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class messagesTestClass {
-    public static void main(String[] args) {
+/*    public static void main(String[] args) {
          String FilePath = "This is the message";//realy just a stand in for the name of anything recieved over bluetooth
          String sender = "Sender ID";//id of device sending the packet
          String target = "Reciever ID";//id of device sending the packet
@@ -24,7 +25,7 @@ public class messagesTestClass {
 
       for(int i = 0; i < rep.length; i++){
           //messages(String FilePath, String sender, String target, int timeReceived, String FileType, int sizeInMem)
-          rep[i] = new messages(FilePath , sender, target, timeRecievd, FileType, sizeInMem);
+          rep[i] = new messages(FilePath , sender, target, timeRecievd, FileType, sizeInMem, null);
       }
 
       for(int i = 0; i < rep.length; i++){
@@ -36,5 +37,6 @@ public class messagesTestClass {
 
 
 
-    }
+
+    }*/
 }
