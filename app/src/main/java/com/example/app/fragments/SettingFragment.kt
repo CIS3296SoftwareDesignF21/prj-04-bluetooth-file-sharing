@@ -36,6 +36,14 @@ class SettingFragment : Fragment() {
         }
 
     }
+    companion object{
+        fun newInstance(): SettingFragment {
+            val args = Bundle()
+            val fragment = SettingFragment()
+            fragment.arguments = args
+            return fragment
+        }
+    }
 
 
 }

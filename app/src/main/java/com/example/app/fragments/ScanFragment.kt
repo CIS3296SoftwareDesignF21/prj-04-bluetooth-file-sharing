@@ -16,6 +16,8 @@
 
 package com.example.app.fragments
 
+import android.bluetooth.BluetoothDevice
+import android.bluetooth.le.BluetoothLeScanner
 import android.bluetooth.le.ScanResult
 import android.os.Build
 import android.os.Bundle
@@ -78,7 +80,8 @@ class ScanFragment : Fragment() {
         /*create listener to scan result data*/
         val results = Observer<MutableList<ScanResult>> { results ->
             /*this calls the recycle view adapter to update our list*/
-            scannerAdapter.updateView(results)
+
+            scannerAdapter.updateView(results) //results
         }
 
         val connected = Observer<Boolean> {
@@ -91,7 +94,14 @@ class ScanFragment : Fragment() {
         serverViewModel.connectionState.observe(viewLifecycleOwner, connected)
 
     }
-
+    companion object{
+        fun newInstance(): ScanFragment{
+            val args = Bundle()
+            val fragment = ScanFragment()
+            fragment.arguments = args
+            return fragment
+        }
+    }
 
     /*
     * This method simply initializes the recycle view we are using in our first fragment

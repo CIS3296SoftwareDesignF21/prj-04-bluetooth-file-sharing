@@ -90,6 +90,13 @@ class ClientFragment : Fragment() {
 
     }
 
-
+    companion object{
+        fun newInstance(): ClientFragment {
+            val args = Bundle()
+            val fragment = ClientFragment()
+            fragment.arguments = args
+            return fragment
+        }
+    }
 
 }

@@ -41,5 +41,13 @@ class SendFragment : Fragment() {
         }
 
     }
+    companion object{
+        fun newInstance(): SendFragment {
+            val args = Bundle()
+            val fragment = SendFragment()
+            fragment.arguments = args
+            return fragment
+        }
+    }
 
 }

@@ -46,10 +46,16 @@ class MainActivity : AppCompatActivity() {
 
         BluetoothGATT.init(application, serverViewModel)
 
+        val scanFrag : ScanFragment         = ScanFragment.newInstance();    val SCANF_STRING     = "scanFrag"
+        val sendFrag : SendFragment         = SendFragment.newInstance();    val SENDF_STRING     = "sendFrag"
+        val settingFrag : SettingFragment   = SettingFragment.newInstance(); val SETTINGF_STRING  = "settingFrag"
+        val clientFragment : ClientFragment = ClientFragment.newInstance();  val CLIENTF_STRING   = "clientFrag"
+
         //sets initial fragment
         supportFragmentManager.commit {
             setReorderingAllowed(true)
-            add<ScanFragment>(R.id.fragment_container)
+            add(R.id.fragment_container, scanFrag)
+            addToBackStack(SCANF_STRING)
         }
 
         sharedViewModel.screen.observe(this, Observer { curScreen ->
@@ -59,25 +65,29 @@ class MainActivity : AppCompatActivity() {
                 0 -> {
                     supportFragmentManager.commit {
                         setReorderingAllowed(true)
-                        replace<ScanFragment>(R.id.fragment_container)
+                        replace(R.id.fragment_container, scanFrag)
+                        addToBackStack(SCANF_STRING)
                     }
                 }
                 1 -> {
                     supportFragmentManager.commit {
                         setReorderingAllowed(true)
-                        replace<SendFragment>(R.id.fragment_container)
+                        replace(R.id.fragment_container, sendFrag)
+                        addToBackStack(SENDF_STRING)
                     }
                 }
                 2 -> {
                     supportFragmentManager.commit {
                         setReorderingAllowed(true)
-                        replace<SettingFragment>(R.id.fragment_container)
+                        replace(R.id.fragment_container, settingFrag)
+                        addToBackStack(SETTINGF_STRING)
                     }
                 }
                 3 -> {
                     supportFragmentManager.commit {
                         setReorderingAllowed(true)
-                        replace<ClientFragment>(R.id.fragment_container)
+                        replace(R.id.fragment_container, clientFragment)
+                        addToBackStack(CLIENTF_STRING)
                     }
                 }
                 else -> {}
