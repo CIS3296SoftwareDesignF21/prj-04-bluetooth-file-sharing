@@ -1,0 +1,23 @@
+## List the tasks from Trello that each team member have accomplished during this first week. 
+
+#### Nick
+
+- Created and Designed the UML
+- Added fucntionality for sending and recieving packets over bluetooth 
+
+#### Zack
+- Created package storage that aloows access to access to files in an external storage
+- Rewrote the vision statement to reflect feedback given
+
+#### Brock
+- Created Message sending screen
+- 
+
+
+#### Caleb
+- Created package "messages" that contains message object that can be sent over bluetooth.
+- Updated Personas
+
+
+#### Akshay
+- Edited Personas to meet standard described by Proffesor
