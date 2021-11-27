@@ -24,13 +24,14 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.app.databinding.DeviceViewHolderBinding
+import com.example.app.fragments.data.SharedFragmentViewModel
 
 
 /**
  * Adapter for displaying remote Bluetooth devices that are being advertised
  */
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-class DeviceAdapter : RecyclerView.Adapter<DeviceAdapter.ScanResultVh>() {
+class DeviceAdapter(val sharedView: SharedFragmentViewModel) : RecyclerView.Adapter<DeviceAdapter.ScanResultVh>() {
 
     val TAG = "ScannerAdapter"
 
@@ -66,13 +67,20 @@ class DeviceAdapter : RecyclerView.Adapter<DeviceAdapter.ScanResultVh>() {
 
     inner class ScanResultVh(private val binding: DeviceViewHolderBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
         fun bind(item: ScanResult?) {
             item?.let {
-                binding.deviceName.text = it.device.name
-                binding.deviceAddress.text = it.device.address
-                binding.lastSeen.text = (it.timestampNanos/1000000000).toString()
+                val device = it.device
+                binding.deviceName.text = device.name
+                binding.deviceAddress.text = device.address
+                binding.deviceCard.setOnClickListener{
+
+                    sharedView.setClient(device)
+
+                }
             }
         }
+
     }
 
 

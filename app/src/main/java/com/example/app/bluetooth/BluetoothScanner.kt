@@ -7,22 +7,21 @@ import android.content.Context
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
+import android.os.ParcelUuid
 import android.util.Log
 import androidx.annotation.RequiresApi
-import com.example.app.BluetoothLiveData
-import com.example.app.CONTROLLER_TAG
-import com.example.app.SCAN_PERIOD_IN_MILLIS
-
+import com.example.app.*
+import com.example.app.bluetooth.data.ConnectionLiveData
+import com.example.app.bluetooth.data.ScanLiveData
 
 
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-class BluetoothController(private val context: Context, private val viewModel : BluetoothLiveData) {
+class BluetoothScanner(private val context: Context, private val viewModel : ScanLiveData) {
 
     private var bluetoothLeScanner: BluetoothLeScanner? = null
     private lateinit var bluetoothAdapter: BluetoothAdapter
+    private val ScanFilterService_UUID : ParcelUuid = ParcelUuid(SERVICE_UUID)
 
-
-    private var handler: Handler? = null
     private var scanCallback: ScanCallback? = null
 
 
@@ -37,7 +36,6 @@ class BluetoothController(private val context: Context, private val viewModel : 
             bluetoothLeScanner = bluetoothAdapter.bluetoothLeScanner
         }
 
-        handler = Handler(Looper.myLooper()!!)
     }
 
     /*
@@ -52,7 +50,6 @@ class BluetoothController(private val context: Context, private val viewModel : 
             Log.d(CONTROLLER_TAG, "startScanning: already scanning")
             return
         }
-        handler?.postDelayed({ stopScanning() }, SCAN_PERIOD_IN_MILLIS)
         scanCallback = SampleScanCallback()
         bluetoothLeScanner?.startScan(buildScanFilters(), buildScanSettings(), scanCallback)
     }
@@ -61,7 +58,7 @@ class BluetoothController(private val context: Context, private val viewModel : 
     /*
     * Stops scanning
     */
-    private fun stopScanning() {
+    fun stopScanning() {
         Log.d(CONTROLLER_TAG, "stopScanning")
         bluetoothLeScanner?.stopScan(scanCallback)
         scanCallback = null
@@ -74,7 +71,7 @@ class BluetoothController(private val context: Context, private val viewModel : 
     */
     private fun buildScanFilters(): List<ScanFilter> {
         val scanFilter = ScanFilter.Builder()
-            //.setServiceUuid(ScanFilterService_UUID)
+            .setServiceUuid(ScanFilterService_UUID)
             .build()
         Log.d(CONTROLLER_TAG, "buildScanFilters")
         return listOf(scanFilter)
@@ -92,19 +89,19 @@ class BluetoothController(private val context: Context, private val viewModel : 
     inner class SampleScanCallback() : ScanCallback() {
 
         /*onBatchScanResults passes all results to our viewModel via setItems method*/
-        override fun onBatchScanResults(results: MutableList<ScanResult>?) {
-            super.onBatchScanResults(results)
-            Log.d(CONTROLLER_TAG, "onBatchScanResults size: ${results?.size}")
-
-            results?.let { viewModel.setItems(it) }
-        }
+//        override fun onBatchScanResults(results: MutableList<ScanResult>?) {
+//            super.onBatchScanResults(results)
+//            Log.d(CONTROLLER_TAG, "onBatchScanResults size: ${results?.size}")
+//
+//            results?.let { viewModel.setScanItems(it) }
+//        }
 
         /*onScanResults passes one result to our viewModel via addSingleItems method*/
         override fun onScanResult(callbackType: Int, result: ScanResult) {
             super.onScanResult(callbackType, result)
             Log.d(CONTROLLER_TAG, "onScanResult: single")
 
-            viewModel.addSingleItem(result)
+            viewModel.addSingleScanItem(result)
         }
 
         /*onScanFailed logs an error if the scan was a failure*/

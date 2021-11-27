@@ -1,4 +1,4 @@
-package com.example.app
+package com.example.app.bluetooth.data
 
 import android.bluetooth.le.ScanResult
 import android.os.Build
@@ -6,29 +6,18 @@ import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.app.DATA_TAG
 
 
-
-/*
- * BluetoothLiveData this class is a little confusing
- */
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-class BluetoothLiveData(): ViewModel() {
+class ScanLiveData: ViewModel() {
 
+    //Device Lists Live Data
     private var mutableDeviceList: MutableList<ScanResult> = arrayListOf()
-
     val mutableDeviceListLiveData = MutableLiveData<MutableList<ScanResult>>()
 
-    fun setItems(mutableList: MutableList<ScanResult>) {
-        if (mutableList != mutableDeviceList) {
 
-            mutableDeviceList = mutableList
-
-            mutableDeviceListLiveData.value = mutableDeviceList
-        }
-    }
-
-    fun addSingleItem(item: ScanResult) {
+    fun addSingleScanItem(item: ScanResult) {
         /**
          * In this particular case the data coming in may be duplicate. So check that only unique
          * elements are admitted: the device Id + device name should create a unique pair.
@@ -44,6 +33,4 @@ class BluetoothLiveData(): ViewModel() {
 
         mutableDeviceListLiveData.value = mutableDeviceList
     }
-
-
 }
