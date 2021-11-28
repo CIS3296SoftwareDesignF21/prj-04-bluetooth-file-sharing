@@ -2,9 +2,11 @@ package com.example.app.storage
 
 import java.io.*
 import android.content.Context
+import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import androidx.annotation.RequiresApi
+import java.net.URI
 
 /* References:
 * https://stackoverflow.com/questions/5092591/what-are-the-differences-among-internal-storage-external-storage-sd-card-and-r
@@ -39,13 +41,37 @@ class FileStorage(private val context: Context) { // Stores context as a class v
         }
 
         /* Example Invocation:
-
             // Test file storage
             val fileName = "test.txt"
             val fileContents = "testing123".toByteArray()
-
             val fs: FileStorage = FileStorage(requireContext())
             fs.saveFile(fileName, fileContents)
          */
     }
+
+    @Throws(IOException::class)
+    fun readBytes(context: Context, uri: Uri): ByteArray? =
+        context.contentResolver.openInputStream(uri)?.buffered()?.use { it.readBytes() }
 }
+
+
+//Instructions for adding the file picker to a button:
+//
+//<1. Add to MainActivity>
+//
+//override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//    super.onActivityResult(requestCode, resultCode, data)
+//
+//    if (requestCode == 111) {
+//        getContentResolver().takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+//        val selectedFile = data?.data // The uri with the location of the file
+//        // URI is given from selectedFile.toString()
+//        // Pass the URI into the readBytes() function above to get it as a byte array
+//    }
+//}
+//<2. Put in onclick listener in a fragment>
+//val intent = Intent()
+//  .setType("*/*")
+//  .setAction(Intent.ACTION_GET_CONTENT)
+//
+//   activity?.startActivityForResult(Intent.createChooser(intent, "Select a file"), 111)
