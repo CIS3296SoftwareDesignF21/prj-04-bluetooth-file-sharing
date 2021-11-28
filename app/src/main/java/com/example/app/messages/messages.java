@@ -3,18 +3,21 @@ package com.example.app.messages;
 import android.net.Uri;
 import android.os.Build;
 import androidx.annotation.RequiresApi;
-import kotlin.UByteArray;
+import java.io.Serializable;
 
-import java.io.File;
+
+
+import java.io.*;
 import java.util.Objects;
 
-public class messages {//message object will be sent over bT impl
+public class messages implements Serializable  {//message object will be sent over bT impl
+//public class messages   {//message object will be sent over bT impl
 
 
     //public String FilePath;//really just a stand in for the name of anything received over bluetooth
     public String textContent = null;// text message that will be sent
     public Uri FileURI = null; //possible
-    public UByteArray byteArray = null;
+    public byte[] byteArray = null;
     public String sender = null;//id of device sending the packet
     public String target = null;//id of device sending the packet
     public int timeReceived  = 0;
@@ -22,7 +25,7 @@ public class messages {//message object will be sent over bT impl
     public int sizeInMem = 0; //referring to the messages size in memory
 
 
-    public messages(String textContent, UByteArray byteArray, String sender, String target, int timeReceived, String FileType, int sizeInMem){//constructor form message with no attachment
+    public messages(String textContent, byte[] byteArray, String sender, String target, int timeReceived, String FileType, int sizeInMem){//constructor form message with no attachment
         this.textContent  = textContent;
         this.byteArray = byteArray;
         this.sender = sender;
@@ -32,7 +35,7 @@ public class messages {//message object will be sent over bT impl
         this.sizeInMem = sizeInMem;
     }
 
-    public messages(String textContent, Uri FileURI, UByteArray byteArray, String sender, String target, int timeReceived, String FileType, int sizeInMem){//for messages with a file attachment
+    public messages(String textContent, Uri FileURI, byte[] byteArray, String sender, String target, int timeReceived, String FileType, int sizeInMem){//for messages with a file attachment
         this.textContent = textContent;
         this.FileURI = FileURI;
         this.byteArray = byteArray;
@@ -82,8 +85,36 @@ public class messages {//message object will be sent over bT impl
         return Objects.hash(textContent, FileURI, sender, target, FileType, byteArray, timeReceived, sizeInMem);
     }
 
-    public UByteArray toByteArray(){//converts the message object to a BYteArray
+    public byte[] toByteArray(){//converts the message object to a BYteArray
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        ObjectOutputStream out = null;
+        try {
+            out = new ObjectOutputStream(bos);
+            out.writeObject(this);
+            out.flush();
+            byte[] yourBytes = bos.toByteArray();
+            return yourBytes;
+            
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                bos.close();
+            } catch (IOException ex) {
+                // ignore close exception
+            }
+        }
         return null;
+    }
+
+
+
+    public boolean hasAttachment(){// returns true if the FileURI is not null meaning it has a File Attachment
+        if(this.FileURI == null){
+            return false;
+        }
+        return true;
     }
 
 
