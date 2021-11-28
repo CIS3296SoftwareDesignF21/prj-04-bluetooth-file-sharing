@@ -3,6 +3,8 @@ package com.example.app.messages;
 import android.net.Uri;
 import android.os.Build;
 import androidx.annotation.RequiresApi;
+import kotlin.io.SerializableKt;
+
 import java.io.Serializable;
 
 
@@ -11,7 +13,7 @@ import java.io.*;
 import java.util.Objects;
 
 public class messages implements Serializable  {//message object will be sent over bT impl
-//public class messages   {//message object will be sent over bT impl
+
 
 
     //public String FilePath;//really just a stand in for the name of anything received over bluetooth
@@ -85,12 +87,13 @@ public class messages implements Serializable  {//message object will be sent ov
         return Objects.hash(textContent, FileURI, sender, target, FileType, byteArray, timeReceived, sizeInMem);
     }
 
-    public byte[] toByteArray(){//converts the message object to a BYteArray
+    public static  byte[] toByteArray(Object o){//converts the message object to a BYteArray
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         ObjectOutputStream out = null;
         try {
+
             out = new ObjectOutputStream(bos);
-            out.writeObject(this);
+            out.writeObject(o);
             out.flush();
             byte[] yourBytes = bos.toByteArray();
             return yourBytes;
