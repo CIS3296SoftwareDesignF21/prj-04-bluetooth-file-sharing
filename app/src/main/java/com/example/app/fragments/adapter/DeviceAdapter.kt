@@ -75,7 +75,7 @@ class DeviceAdapter(val sharedView: SharedFragmentViewModel) : RecyclerView.Adap
                 binding.deviceAddress.text = device.address
                 binding.deviceCard.setOnClickListener{
 
-                    sharedView.setClient(device)
+                    sharedView.setSend(device)
 
                 }
             }

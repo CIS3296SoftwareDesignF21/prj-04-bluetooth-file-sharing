@@ -10,9 +10,10 @@ import com.example.app.bluetooth.data.ConnectionLiveData
 import com.example.app.GATT_TAG
 import com.example.app.MESSAGE_UUID
 import com.example.app.SERVICE_UUID
+import com.example.app.messages.messages
 
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-class BluetoothClient(val connectionLiveData : ConnectionLiveData, val app : Application) {
+class BluetoothClient(val app : Application) {
 
     private var connectionState : Boolean = false
     private var connection : BluetoothDevice? = null
@@ -27,6 +28,10 @@ class BluetoothClient(val connectionLiveData : ConnectionLiveData, val app : App
             connection = device
             gattClientCallback = GattClientCallback()
             gattClient = device.connectGatt(app, false, gattClientCallback)
+    }
+
+    fun sendMessage(message : messages){
+
     }
 
 
@@ -64,7 +69,7 @@ class BluetoothClient(val connectionLiveData : ConnectionLiveData, val app : App
                 Log.d(CLIENT_TAG, "onCharacteristicWriteRequest: Have message: \"$message\"")
 
                 message?.let {
-                    connectionLiveData.setRemoteMessage(it)
+                    //connectionLiveData.setRemoteMessage(it)
                 }
             }
 

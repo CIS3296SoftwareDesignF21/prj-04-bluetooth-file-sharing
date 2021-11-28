@@ -14,9 +14,11 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.app.bluetooth.BluetoothClient
+import com.example.app.bluetooth.BluetoothGATT
 import com.example.app.bluetooth.data.ConnectionLiveData
 import com.example.app.databinding.FragmentClientBinding
 import com.example.app.fragments.data.SharedFragmentViewModel
+import com.example.app.messages.messages
 
 
 /*
@@ -34,27 +36,6 @@ class ClientFragment : Fragment() {
 
     private lateinit var binding: FragmentClientBinding
 
-    private lateinit var btClient : BluetoothClient
-
-    private lateinit var displayDevice : BluetoothDevice
-
-    private var messageList : String = ""
-
-    override fun onCreate(savedInstanceState: Bundle?){
-        super.onCreate(savedInstanceState)
-
-        val app = requireActivity().application
-
-        btClient = BluetoothClient(clientViewModel,app)
-
-        displayDevice = sharedViewModel.connection!!.value!!
-
-        val deviceName = displayDevice.name
-        Log.d("ClientFragment", "device: $deviceName")
-
-        btClient.connectToDevice(displayDevice)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -68,25 +49,16 @@ class ClientFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        binding.deviceTitle.text = displayDevice.name
-        binding.messageBox.text = messageList
 
-        val message = Observer<String> {
 
-            messageList = messageList + it + "\n"
+        val message = Observer<messages> {
 
-            binding.messageBox.text = messageList
 
-        }
 
-        val connected = Observer<Boolean> {
-                connected -> if (connected == true) { Toast.makeText(context, "Officially connected", Toast.LENGTH_SHORT).show() }
-        else {Toast.makeText(context, "Connection Broken", Toast.LENGTH_SHORT).show()}
         }
 
         /*tell our observer to start observing*/
-        clientViewModel.messageRemoteLiveData.observe(viewLifecycleOwner, message)
-        clientViewModel.connectionState.observe(viewLifecycleOwner, connected)
+        BluetoothGATT.remoteMessage.observe(viewLifecycleOwner, message)
 
     }
 

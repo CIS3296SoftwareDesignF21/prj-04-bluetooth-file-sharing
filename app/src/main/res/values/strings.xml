@@ -13,5 +13,6 @@
     <string name="messageBoxID">message box</string>
     <string name="sendButtonID">Send</string>
     <string name="sendInstructionsID">Send Instructions</string>
+    <string name="fileButton">Add File</string>
 
 </resources>

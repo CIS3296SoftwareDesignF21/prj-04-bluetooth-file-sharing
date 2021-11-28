@@ -21,8 +21,11 @@ import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.app.*
 import com.example.app.bluetooth.data.ConnectionLiveData
+import com.example.app.messages.messages
 
 
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
@@ -42,6 +45,9 @@ object BluetoothGATT {
     private var messageCharacteristic: BluetoothGattCharacteristic? = null
 
     private var connectionState: Boolean = false
+
+    private lateinit var _remoteMessage : MutableLiveData<messages>
+    var remoteMessage = _remoteMessage as LiveData<messages>
 
     fun init(app: Application, viewModel : ConnectionLiveData){
         this.app = app
@@ -154,6 +160,34 @@ object BluetoothGATT {
                 connectionLiveData.setConnection(connection)
 
             }
+        }
+
+        override fun onCharacteristicWriteRequest(
+            device: BluetoothDevice?,
+            requestId: Int,
+            characteristic: BluetoothGattCharacteristic?,
+            preparedWrite: Boolean,
+            responseNeeded: Boolean,
+            offset: Int,
+            value: ByteArray?
+        ) {
+            super.onCharacteristicWriteRequest(
+                device,
+                requestId,
+                characteristic,
+                preparedWrite,
+                responseNeeded,
+                offset,
+                value
+            )
+
+            val message = value?.toString(Charsets.UTF_8)
+
+            Log.d(GATT_TAG, "onCharacteristicWriteRequest: Have message: \"$message\"")
+            message?.let {
+               // _remoteMessage.postValue(it)
+            }
+
         }
 
     }

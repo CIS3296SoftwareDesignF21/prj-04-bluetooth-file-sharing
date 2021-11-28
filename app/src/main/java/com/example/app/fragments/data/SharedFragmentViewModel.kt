@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothDevice
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.app.messages.messages
 
 class SharedFragmentViewModel : ViewModel() {
 
@@ -14,15 +15,22 @@ class SharedFragmentViewModel : ViewModel() {
     private val mutableScreen = MutableLiveData<Int>()
     val screen = mutableScreen as LiveData<Int>
 
-    fun setClient(device : BluetoothDevice){
+    private val mutableMessage = MutableLiveData<messages>()
+    val message = mutableMessage as LiveData<messages>
 
-        mutableScreen.value = 3
+    fun setMessage(message : messages){
+        this.mutableMessage.value = message
+    }
+
+    fun setSend(device : BluetoothDevice){
+
+        mutableScreen.value = 2
         mutableConnection.value = device
 
     }
 
-    fun setSend(){
-        mutableScreen.value = 1
+    fun setClient(){
+        mutableScreen.value = 3
     }
 
     fun setSettings(){

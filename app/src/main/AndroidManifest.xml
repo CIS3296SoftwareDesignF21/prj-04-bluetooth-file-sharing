@@ -3,7 +3,10 @@
           xmlns:tools="http://schemas.android.com/tools" package="com.example.app">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
+    <!-- File storage -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- / File Storage Class -->
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE"/>

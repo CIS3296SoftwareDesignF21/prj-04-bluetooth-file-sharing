@@ -1,6 +1,8 @@
 package com.example.app
 
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
@@ -8,17 +10,17 @@ import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.add
 import androidx.fragment.app.commit
-import androidx.fragment.app.replace
 import androidx.lifecycle.Observer
-import com.example.app.bluetooth.BluetoothScanner
 import com.example.app.bluetooth.BluetoothGATT
+import com.example.app.bluetooth.BluetoothScanner
 import com.example.app.bluetooth.data.ConnectionLiveData
 import com.example.app.bluetooth.data.ScanLiveData
 import com.example.app.databinding.ActivityMainBinding
 import com.example.app.fragments.*
 import com.example.app.fragments.data.SharedFragmentViewModel
+import com.example.app.messages.messages
+import com.example.app.storage.FileStorage
 
 @RequiresApi(Build.VERSION_CODES.M)
 //@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
@@ -29,6 +31,7 @@ class MainActivity : AppCompatActivity() {
     private val scanData : ScanLiveData by viewModels()
 
     private lateinit var btScanner: BluetoothScanner
+    private val fileStorage : FileStorage = FileStorage(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -101,7 +104,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.fab.setOnClickListener {
 
-            sharedViewModel.setSend()
+            sharedViewModel.setClient()
 
         }
 
@@ -125,6 +128,38 @@ class MainActivity : AppCompatActivity() {
         btScanner.stopScanning()
         BluetoothGATT.stopServer()
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == 111) {
+
+            val selectedFile = data?.data // The uri with the location of the file
+
+            contentResolver.takePersistableUriPermission(selectedFile!!, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+            // URI is given from selectedFile.toString()
+            val filePath = selectedFile.toString()
+
+            // Pass the URI into the readBytes() function above to get it as a byte array
+            val byteArray = fileStorage.readBytes(this, selectedFile)
+
+            val message : messages =
+                messages(
+                null,
+                    selectedFile,
+                    byteArray!!.asUByteArray(),
+                "me",
+                null,
+                0,
+                    filePath.substring(filePath.lastIndexOf(".")),
+                    byteArray!!.size
+            )
+
+            sharedViewModel.setMessage(message)
+        }
+    }
+
 
     /*
     * All code below here is used to get permission for location
