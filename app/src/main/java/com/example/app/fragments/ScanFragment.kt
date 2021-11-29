@@ -15,10 +15,12 @@
  */
 
 package com.example.app.fragments
-
+import android.bluetooth.*
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.le.BluetoothLeScanner
 import android.bluetooth.le.ScanResult
+import android.graphics.Color
+import android.graphics.Color.RED
 import android.os.Build
 import android.os.Bundle
 import android.view.*
@@ -28,6 +30,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.app.MainActivity
 import com.example.app.bluetooth.data.ConnectionLiveData
 import com.example.app.bluetooth.data.ScanLiveData
 import com.example.app.fragments.adapter.DeviceAdapter
@@ -43,6 +46,7 @@ class ScanFragment : Fragment() {
 
     private lateinit var binding: FragmentScrollBinding
     private lateinit var scannerAdapter: DeviceAdapter
+    public lateinit var ma : MainActivity
 
     /*get reference to the viewModel that will hold BluetoothLiveData*/
     private val scanData: ScanLiveData by activityViewModels()
@@ -71,6 +75,7 @@ class ScanFragment : Fragment() {
     * BluetoothController and call requestLocationPermission which in turn calls startScanning a method from
     * our BluetoothController.
     */
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -81,7 +86,7 @@ class ScanFragment : Fragment() {
         val results = Observer<MutableList<ScanResult>> { results ->
             /*this calls the recycle view adapter to update our list*/
 
-            scannerAdapter.updateView(results) //results
+            scannerAdapter.updateView(results)
         }
 
         val connected = Observer<Boolean> {
@@ -89,6 +94,8 @@ class ScanFragment : Fragment() {
             else {Toast.makeText(context, "Connection Broken", Toast.LENGTH_SHORT).show()}
         }
 
+        binding.recyclerView.setBackgroundColor(Color.MAGENTA)
+        binding.frameLayout.setBackgroundColor(Color.BLUE)
         /*tell our observers to start observing*/
         scanData.mutableDeviceListLiveData.observe(viewLifecycleOwner, results)
         serverViewModel.connectionState.observe(viewLifecycleOwner, connected)
@@ -102,7 +109,6 @@ class ScanFragment : Fragment() {
             return fragment
         }
     }
-
     /*
     * This method simply initializes the recycle view we are using in our first fragment
     * it also creates an instance of our DeviceAdapter class to use with the recycle view.
@@ -114,6 +120,4 @@ class ScanFragment : Fragment() {
             this.adapter = scannerAdapter
         }
     }
-
 }
-

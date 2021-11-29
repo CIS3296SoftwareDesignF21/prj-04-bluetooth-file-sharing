@@ -100,7 +100,6 @@ class BluetoothScanner(private val context: Context, private val viewModel : Sca
         override fun onScanResult(callbackType: Int, result: ScanResult) {
             super.onScanResult(callbackType, result)
             Log.d(CONTROLLER_TAG, "onScanResult: single")
-
             viewModel.addSingleScanItem(result)
         }
 

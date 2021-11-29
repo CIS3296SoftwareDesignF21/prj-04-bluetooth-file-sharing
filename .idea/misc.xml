@@ -5,6 +5,8 @@
       <map>
         <entry key="..\:/Users/Brock/StudioProjects/prj-04-bluetooth-file-sharing/app/src/main/res/drawable/send.xml" value="0.1390625" />
         <entry key="..\:/Users/Brock/StudioProjects/prj-04-bluetooth-file-sharing/app/src/main/res/layout/activity_main.xml" value="0.3072916666666667" />
+        <entry key="..\:/Users/Brock/StudioProjects/prj-04-bluetooth-file-sharing/app/src/main/res/layout/file_display_fragment.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Brock/StudioProjects/prj-04-bluetooth-file-sharing/app/src/main/res/layout/fragment_file_display.xml" value="0.264" />
         <entry key="..\:/Users/Brock/StudioProjects/prj-04-bluetooth-file-sharing/app/src/main/res/layout/fragment_send.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/Brock/StudioProjects/prj-04-bluetooth-file-sharing/app/src/main/res/layout/fragment_send_option.xml" value="0.2" />
         <entry key="..\:/Users/Brock/StudioProjects/prj-04-bluetooth-file-sharing/app/src/main/res/layout/fragment_settings.xml" value="0.13020833333333334" />
@@ -15,7 +17,7 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android API 31 Platform" project-jdk-type="Android SDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="Android API 31 Platform" project-jdk-type="Android SDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

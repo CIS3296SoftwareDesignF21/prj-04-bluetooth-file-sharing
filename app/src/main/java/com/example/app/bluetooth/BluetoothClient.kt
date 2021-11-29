@@ -25,9 +25,9 @@ class BluetoothClient(val app : Application) {
 
 
     fun connectToDevice(device: BluetoothDevice) {
-            connection = device
-            gattClientCallback = GattClientCallback()
-            gattClient = device.connectGatt(app, false, gattClientCallback)
+        connection = device
+        gattClientCallback = GattClientCallback()
+        gattClient = device.connectGatt(app, false, gattClientCallback)
     }
 
     fun sendMessage(message : messages){

@@ -47,13 +47,12 @@ class MainActivity : AppCompatActivity() {
         btScanner= BluetoothScanner(this,scanData)
         btScanner.initialize()
 
-        BluetoothGATT.init(application, serverViewModel)
+        //BluetoothGATT.init(application, serverViewModel)
 
         val scanFrag : ScanFragment         = ScanFragment.newInstance();    val SCANF_STRING     = "scanFrag"
         val sendFrag : SendFragment         = SendFragment.newInstance();    val SENDF_STRING     = "sendFrag"
         val settingFrag : SettingFragment   = SettingFragment.newInstance(); val SETTINGF_STRING  = "settingFrag"
         val clientFragment : ClientFragment = ClientFragment.newInstance();  val CLIENTF_STRING   = "clientFrag"
-
         //sets initial fragment
         supportFragmentManager.commit {
             setReorderingAllowed(true)
@@ -146,15 +145,15 @@ class MainActivity : AppCompatActivity() {
 
             val message : messages =
                 messages(
-                null,
+                    null,
                     selectedFile,
                     byteArray!!.asUByteArray(),
-                "me",
-                null,
-                0,
+                    "me",
+                    null,
+                    0,
                     filePath.substring(filePath.lastIndexOf(".")),
                     byteArray!!.size
-            )
+                )
 
             sharedViewModel.setMessage(message)
         }
@@ -201,7 +200,7 @@ class MainActivity : AppCompatActivity() {
             PERMISSION_REQUEST_LOCATION -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     btScanner.startScanning()
-                    BluetoothGATT.startServer()
+//                    BluetoothGATT.startServer()
                 }
             }
             else -> Toast.makeText(

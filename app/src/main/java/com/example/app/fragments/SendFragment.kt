@@ -91,10 +91,10 @@ class SendFragment : Fragment() {
             fileRequest = true
 
             val intent = Intent()
-              .setType("*/*")
-              .setAction(Intent.ACTION_GET_CONTENT)
+                .setType("*/*")
+                .setAction(Intent.ACTION_GET_CONTENT)
 
-               activity?.startActivityForResult(Intent.createChooser(intent, "Select a file"), 111)
+            activity?.startActivityForResult(Intent.createChooser(intent, "Select a file"), 111)
 
         }
 
