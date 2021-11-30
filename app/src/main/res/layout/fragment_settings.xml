@@ -4,6 +4,22 @@
                                                    android:layout_width="match_parent"
                                                    android:layout_height="match_parent">
 
+    <EditText
+            android:layout_width="322dp"
+            android:layout_height="101dp"
+            android:inputType="textPersonName"
+            android:text="Forward your last file"
+            android:textSize="18sp"
+            android:ems="10"
+            android:id="@+id/forwarding"
+            app:layout_constraintTop_toBottomOf="@+id/Settings_switch"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="60dp"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.653" />
+
     <Switch
             android:text="Public?"
             android:textSize="14sp"
@@ -15,8 +31,11 @@
             android:visibility="visible"
             android:checked="true"
             android:key="switch"
-            android:summary="Turn this option on or off" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.488" android:layout_height="46dp" android:layout_width="295dp"/>
+            android:summary="Turn this option on or off"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.488"
+            android:layout_height="48dp"
+            android:layout_width="295dp" />
     <EditText
             android:layout_width="322dp"
             android:layout_height="101dp"
@@ -36,4 +55,16 @@
             android:layout_height="wrap_content" android:id="@+id/close"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"/>
+
+    <Button
+            android:text="Forward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/close"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintVertical_bias="0.779" />
 </androidx.constraintlayout.widget.ConstraintLayout>
