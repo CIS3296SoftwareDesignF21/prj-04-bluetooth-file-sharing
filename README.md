@@ -78,7 +78,7 @@ He is on many Discord servers, and keeps up with the latest tech news. He is an 
 Tony wants to throw a party to become more popular, but he is afraid to invite his classmates face to face. Tony uses the Bluetooth File Transfer app
 at school to send invitations to everyone there who also has the app. The invitation includes pictures and a message
 with details about the party for everyone to see. Everyone gets the invitation and thinks that Tony is super cool for using
-Bluetooth to invite them. The party was a massive success, Tony became one of the most popular kids in school, and dropped out to pursue a lucrative career in rap.
+Bluetooth to invite them. The party was a massive success. Tony became one of the most popular kids in school, and dropped out to pursue a lucrative career in rap.
 
 ## Persona 3 - Peter: Setting Up A New Phone - bulk transfer
 
@@ -98,7 +98,7 @@ making his setup process hassle free.
 ## Persona 4 - Jennifer: An old-fashioned teacher - hold files for later use
 
 Jennifer is a 26 year old high school English teacher. She completed her bachelors degrees in teaching and English
- at Temple University in 2019. She  She knows very little about technology outside of basic laptop and word processor usage. 
+ at Temple University in 2019. She knows very little about technology outside of basic laptop and word processor usage. 
 She spends most of her time rigorously working on lesson plans and for her students and raising her new born child. 
 She doesnt have time to keep up to date with the newest technology or communication trends. 
 
