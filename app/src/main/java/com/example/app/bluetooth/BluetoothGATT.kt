@@ -21,37 +21,36 @@ import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.example.app.*
-import com.example.app.bluetooth.data.ConnectionLiveData
+import com.example.app.fragments.data.SharedFragmentViewModel
 import com.example.app.messages.messages
 
 
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 object BluetoothGATT {
 
+    private lateinit var sharedViewModel : SharedFragmentViewModel
+
     private var connection: BluetoothDevice? = null
     private val advertiser : BluetoothAdvertiser = BluetoothAdvertiser()
 
     private lateinit var bluetoothManager: BluetoothManager
-    private lateinit var connectionLiveData: ConnectionLiveData
 
     private var app: Application? = null
 
     private var gattServer: BluetoothGattServer? = null
     private var gattServerCallback: BluetoothGattServerCallback? = null
 
-    private var messageCharacteristic: BluetoothGattCharacteristic? = null
-
     private var connectionState: Boolean = false
 
-    private lateinit var _remoteMessage : MutableLiveData<messages>
-    var remoteMessage = _remoteMessage as LiveData<messages>
+    private val _messageList : MutableList<messages> = mutableListOf()
 
-    fun init(app: Application, viewModel : ConnectionLiveData){
+
+    private var temp_message : ByteArray? = null
+
+    fun init(app: Application, sharedViewModel: SharedFragmentViewModel){
+        this.sharedViewModel = sharedViewModel
         this.app = app
-        connectionLiveData = viewModel
         bluetoothManager = app.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
     }
 
@@ -65,36 +64,6 @@ object BluetoothGATT {
         advertiser.stopAdvertising()
     }
 
-    fun postMessage(message: String) {
-        Log.d(GATT_TAG, "Send a message")
-
-        messageCharacteristic = gattServer?.getService(SERVICE_UUID)?.getCharacteristic(MESSAGE_UUID)
-
-
-        messageCharacteristic?.let { characteristic ->
-
-            characteristic.writeType = BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
-
-            val messageBytes = message.toByteArray(Charsets.UTF_8)
-            characteristic.value = messageBytes
-
-            gattServer?.let {
-
-                if(connectionState) {
-                    it.notifyCharacteristicChanged(connection, messageCharacteristic, false)
-                } else {
-                    Log.d(GATT_TAG, "sendMessage: no connection to send a message with")
-                }
-
-            }?: run {
-                Log.d(GATT_TAG, "sendMessage: no gattServer connection to send a message with")
-            }
-
-        }?: run {
-            Log.d(GATT_TAG, "sendMessage: no message Characteristic to send a message with")
-        }
-
-    }
 
     /**
      * Function to setup a local GATT server.
@@ -125,12 +94,62 @@ object BluetoothGATT {
         val messageCharacteristic = BluetoothGattCharacteristic(
             MESSAGE_UUID,
             BluetoothGattCharacteristic.PROPERTY_WRITE,
-            BluetoothGattCharacteristic.PERMISSION_WRITE
+            BluetoothGattCharacteristic.PERMISSION_WRITE,
         )
+
+        messageCharacteristic.setWriteType(BluetoothGattCharacteristic.WRITE_TYPE_NO_RESPONSE)
+
         service.addCharacteristic(messageCharacteristic)
 
 
         return service
+
+    }
+
+    fun handleInputMessage(device: BluetoothDevice, value: ByteArray){
+
+        temp_message = null
+
+        var message : messages? = null
+
+
+        if(value.size < 1000){
+
+            message = messages(
+                value.toString(Charsets.UTF_8),
+                null,
+                null,
+                device.name,
+                null,
+                0,
+                null,
+                value!!.size
+            )
+
+        } else {
+
+            message = messages(
+                null,
+                null,
+                value!!,
+                device.name,
+                null,
+                0,
+                null,
+                value!!.size
+            )
+        }
+
+        val size = value!!.size
+
+        val name = device.name
+
+        Log.d(GATT_TAG, "onCharacteristicWriteRequest: Have message: size: \"$size\" from $device")
+
+        message?.let {
+            _messageList.add(it)
+            sharedViewModel.setMessageList(_messageList)
+        }
 
     }
 
@@ -151,25 +170,23 @@ object BluetoothGATT {
             if (isSuccess && isConnected) {
                 connectionState = true
                 connection = device
-                connectionLiveData.setConnectionState(connectionState)
-                connectionLiveData.setConnection(connection)
+
             } else {
                 connectionState = false
                 connection = null
-                connectionLiveData.setConnectionState(connectionState)
-                connectionLiveData.setConnection(connection)
 
             }
         }
 
+
         override fun onCharacteristicWriteRequest(
             device: BluetoothDevice?,
             requestId: Int,
-            characteristic: BluetoothGattCharacteristic?,
+            characteristic: BluetoothGattCharacteristic,
             preparedWrite: Boolean,
             responseNeeded: Boolean,
             offset: Int,
-            value: ByteArray?
+            value: ByteArray
         ) {
             super.onCharacteristicWriteRequest(
                 device,
@@ -180,16 +197,27 @@ object BluetoothGATT {
                 offset,
                 value
             )
+            Log.d("SVC", "BluetoothGattServerCallback.onCharacteristicWriteRequest with " + value.size + " bytes")
 
-            val message = value?.toString(Charsets.UTF_8)
-
-            Log.d(GATT_TAG, "onCharacteristicWriteRequest: Have message: \"$message\"")
-            message?.let {
-               // _remoteMessage.postValue(it)
+            if ("DONE" == value.toString(Charsets.UTF_8)){
+                handleInputMessage(device!!, temp_message!!)
+            } else {
+                handleInputFragment(value)
             }
 
         }
 
     }
 
+
+    private fun handleInputFragment(value: ByteArray) {
+        Log.d("SVC", "handling input Fragment")
+
+        if(temp_message == null){
+            temp_message = value
+        }else{
+            temp_message = temp_message!! + value
+        }
+
+    }
 }

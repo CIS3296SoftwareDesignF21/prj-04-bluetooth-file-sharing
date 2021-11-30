@@ -16,7 +16,6 @@
 
 package com.example.app.fragments
 
-import android.bluetooth.le.ScanResult
 import android.os.Build
 import android.os.Bundle
 import android.view.*
@@ -25,24 +24,23 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.app.bluetooth.data.ScanLiveData
-import com.example.app.fragments.adapter.DeviceAdapter
-import com.example.app.databinding.FragmentScrollBinding
+import com.example.app.databinding.FragmentMessageBinding
+import com.example.app.fragments.adapter.MessageAdapter
 import com.example.app.fragments.data.SharedFragmentViewModel
+import com.example.app.messages.messages
 
 
 /**
  * Displays remote nearby bluetooth devices via recycle viewer
  */
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-class ScanFragment : Fragment() {
+class MessageFragment : Fragment() {
 
-    private lateinit var binding: FragmentScrollBinding
-    private lateinit var scannerAdapter: DeviceAdapter
+    private lateinit var binding: FragmentMessageBinding
+    private lateinit var scannerAdapter: MessageAdapter
 
-    /*get reference to the viewModel that will hold BluetoothLiveData*/
-    private val scanData: ScanLiveData by activityViewModels()
     val sharedViewModel : SharedFragmentViewModel by activityViewModels()
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,7 +53,7 @@ class ScanFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentScrollBinding.inflate(inflater, container, false)
+        binding = FragmentMessageBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -73,25 +71,20 @@ class ScanFragment : Fragment() {
         setupRecyclerViewAdapter()
 
         /*create listener to scan result data*/
-        val results = Observer<MutableList<ScanResult>> { results ->
+        val results = Observer<List<messages>> { results ->
             /*this calls the recycle view adapter to update our list*/
 
-            scannerAdapter.updateView(results) //results
+            scannerAdapter.updateView(results as MutableList<messages>) //results
         }
 
-//        val connected = Observer<Boolean> {
-//            connected -> if (connected == true) { Toast.makeText(context, "Officially connected", Toast.LENGTH_SHORT).show() }
-//            else {Toast.makeText(context, "Connection Broken", Toast.LENGTH_SHORT).show()}
-//        }
 
         /*tell our observers to start observing*/
-        scanData.mutableDeviceListLiveData.observe(viewLifecycleOwner, results)
-
+        sharedViewModel.messageList.observe(viewLifecycleOwner, results)
     }
     companion object{
-        fun newInstance(): ScanFragment{
+        fun newInstance(): MessageFragment{
             val args = Bundle()
-            val fragment = ScanFragment()
+            val fragment = MessageFragment()
             fragment.arguments = args
             return fragment
         }
@@ -102,7 +95,7 @@ class ScanFragment : Fragment() {
     * it also creates an instance of our DeviceAdapter class to use with the recycle view.
     */
     private fun setupRecyclerViewAdapter() {
-        scannerAdapter = DeviceAdapter(sharedViewModel)
+        scannerAdapter = MessageAdapter(sharedViewModel)
         with(binding.recyclerView) {
             layoutManager = LinearLayoutManager(requireContext())
             this.adapter = scannerAdapter

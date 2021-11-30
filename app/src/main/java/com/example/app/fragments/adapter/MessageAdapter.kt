@@ -23,21 +23,22 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
-import com.example.app.databinding.DeviceViewHolderBinding
+import com.example.app.databinding.MessageViewHolderBinding
 import com.example.app.fragments.data.SharedFragmentViewModel
+import com.example.app.messages.messages
 
 
 /**
  * Adapter for displaying remote Bluetooth devices that are being advertised
  */
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-class DeviceAdapter(val sharedView: SharedFragmentViewModel) : RecyclerView.Adapter<DeviceAdapter.ScanResultVh>() {
+class MessageAdapter(val sharedView: SharedFragmentViewModel) : RecyclerView.Adapter<MessageAdapter.ScanResultVh>() {
 
     val TAG = "ScannerAdapter"
 
-    private var itemsList: MutableList<ScanResult> = arrayListOf()
+    private var itemsList: MutableList<messages> = arrayListOf()
 
-    fun updateView(mutableList:MutableList<ScanResult>){
+    fun updateView(mutableList:MutableList<messages>){
 
         val size : Int = itemsList.size
 
@@ -51,11 +52,11 @@ class DeviceAdapter(val sharedView: SharedFragmentViewModel) : RecyclerView.Adap
 
     override fun getItemCount() = itemsList.size
 
-    private fun getItem(position: Int): ScanResult? = if (itemsList.isEmpty()) null else itemsList[position]
+    private fun getItem(position: Int): messages? = if (itemsList.isEmpty()) null else itemsList[position]
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScanResultVh {
         val binding =
-            DeviceViewHolderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            MessageViewHolderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ScanResultVh(binding)
     }
 
@@ -63,17 +64,22 @@ class DeviceAdapter(val sharedView: SharedFragmentViewModel) : RecyclerView.Adap
         holder.bind(getItem(position))
     }
 
-    inner class ScanResultVh(private val binding: DeviceViewHolderBinding) :
+    inner class ScanResultVh(private val binding: MessageViewHolderBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: ScanResult?) {
+        fun bind(item: messages?) {
             item?.let {
-                val device = it.device
-                binding.deviceName.text = device.name
-                binding.deviceAddress.text = device.address
+                val message = it
+
+                if(it.byteArray == null){
+                    binding.deviceName.text = "Text Message"
+                } else {
+                    binding.deviceName.text = "File"
+                }
+
                 binding.deviceCard.setOnClickListener{
 
-                    sharedView.setSend(device)
+                    sharedView.setClient(message)
 
                 }
             }

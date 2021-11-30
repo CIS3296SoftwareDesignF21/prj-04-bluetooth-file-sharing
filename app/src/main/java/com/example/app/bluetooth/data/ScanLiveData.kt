@@ -25,11 +25,10 @@ class ScanLiveData: ViewModel() {
          * a number of options. Remove the previous element so to keep the latest timestamp
          */
         mutableDeviceList.removeAll {
-            it.device.name == item.device.name && it.device.address == item.device.address
+            it.device.name == item.device.name
         }
         mutableDeviceList.add(item)
         val size : Int = mutableDeviceList.size
-        Log.d(DATA_TAG, "addSingleItem: deciveList is size $size")
 
         mutableDeviceListLiveData.value = mutableDeviceList
     }

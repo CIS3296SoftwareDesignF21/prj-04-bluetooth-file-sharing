@@ -5,17 +5,13 @@ import android.bluetooth.BluetoothManager
 import android.bluetooth.le.*
 import android.content.Context
 import android.os.Build
-import android.os.Handler
-import android.os.Looper
 import android.os.ParcelUuid
 import android.util.Log
 import androidx.annotation.RequiresApi
 import com.example.app.*
-import com.example.app.bluetooth.data.ConnectionLiveData
 import com.example.app.bluetooth.data.ScanLiveData
 
-
-@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+@RequiresApi(Build.VERSION_CODES.M)
 class BluetoothScanner(private val context: Context, private val viewModel : ScanLiveData) {
 
     private var bluetoothLeScanner: BluetoothLeScanner? = null
@@ -77,8 +73,11 @@ class BluetoothScanner(private val context: Context, private val viewModel : Sca
         return listOf(scanFilter)
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun buildScanSettings() = ScanSettings.Builder()
-        .setScanMode(ScanSettings.SCAN_MODE_LOW_POWER).build()
+        .setReportDelay(0)
+        .setMatchMode(ScanSettings.MATCH_MODE_AGGRESSIVE)
+        .setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY).build()
 
 
 
@@ -99,8 +98,6 @@ class BluetoothScanner(private val context: Context, private val viewModel : Sca
         /*onScanResults passes one result to our viewModel via addSingleItems method*/
         override fun onScanResult(callbackType: Int, result: ScanResult) {
             super.onScanResult(callbackType, result)
-            Log.d(CONTROLLER_TAG, "onScanResult: single")
-
             viewModel.addSingleScanItem(result)
         }
 

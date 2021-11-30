@@ -2,7 +2,6 @@ package com.example.app
 
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
@@ -14,20 +13,22 @@ import androidx.fragment.app.commit
 import androidx.lifecycle.Observer
 import com.example.app.bluetooth.BluetoothGATT
 import com.example.app.bluetooth.BluetoothScanner
-import com.example.app.bluetooth.data.ConnectionLiveData
 import com.example.app.bluetooth.data.ScanLiveData
 import com.example.app.databinding.ActivityMainBinding
-import com.example.app.fragments.*
+import com.example.app.fragments.ClientFragment
+import com.example.app.fragments.MessageFragment
+import com.example.app.fragments.ScanFragment
+import com.example.app.fragments.SendFragment
 import com.example.app.fragments.data.SharedFragmentViewModel
 import com.example.app.messages.messages
 import com.example.app.storage.FileStorage
+
 
 @RequiresApi(Build.VERSION_CODES.M)
 //@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 class MainActivity : AppCompatActivity() {
 
     private val sharedViewModel : SharedFragmentViewModel by viewModels()
-    private val serverViewModel: ConnectionLiveData by viewModels()
     private val scanData : ScanLiveData by viewModels()
 
     private lateinit var btScanner: BluetoothScanner
@@ -47,12 +48,13 @@ class MainActivity : AppCompatActivity() {
         btScanner= BluetoothScanner(this,scanData)
         btScanner.initialize()
 
-        BluetoothGATT.init(application, serverViewModel)
+        BluetoothGATT.init(application,sharedViewModel)
 
         val scanFrag : ScanFragment         = ScanFragment.newInstance();    val SCANF_STRING     = "scanFrag"
         val sendFrag : SendFragment         = SendFragment.newInstance();    val SENDF_STRING     = "sendFrag"
-        val settingFrag : SettingFragment   = SettingFragment.newInstance(); val SETTINGF_STRING  = "settingFrag"
         val clientFragment : ClientFragment = ClientFragment.newInstance();  val CLIENTF_STRING   = "clientFrag"
+        val messageFragment : MessageFragment = MessageFragment.newInstance();  val MESSAGEF_STRING   = "clientFrag"
+
 
         //sets initial fragment
         supportFragmentManager.commit {
@@ -82,8 +84,8 @@ class MainActivity : AppCompatActivity() {
                 2 -> {
                     supportFragmentManager.commit {
                         setReorderingAllowed(true)
-                        replace(R.id.fragment_container, settingFrag)
-                        addToBackStack(SETTINGF_STRING)
+                        replace(R.id.fragment_container, messageFragment)
+                        addToBackStack(MESSAGEF_STRING)
                     }
                 }
                 3 -> {
@@ -104,13 +106,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.fab.setOnClickListener {
 
-            sharedViewModel.setClient()
-
-        }
-
-        binding.settings.setOnClickListener{
-
-            sharedViewModel.setSettings()
+            sharedViewModel.setMessageView()
 
         }
 
@@ -136,19 +132,22 @@ class MainActivity : AppCompatActivity() {
 
             val selectedFile = data?.data // The uri with the location of the file
 
-            contentResolver.takePersistableUriPermission(selectedFile!!, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            //contentResolver.takePersistableUriPermission(selectedFile!!, Intent.FLAG_GRANT_READ_URI_PERMISSION);
 
             // URI is given from selectedFile.toString()
             val filePath = selectedFile.toString()
 
             // Pass the URI into the readBytes() function above to get it as a byte array
-            val byteArray = fileStorage.readBytes(this, selectedFile)
+             val byteArray = fileStorage.readBytes(this, selectedFile!!)
+
+
+
 
             val message : messages =
                 messages(
                 null,
                     selectedFile,
-                    byteArray!!.asUByteArray(),
+                    byteArray,
                 "me",
                 null,
                 0,
@@ -159,7 +158,6 @@ class MainActivity : AppCompatActivity() {
             sharedViewModel.setMessage(message)
         }
     }
-
 
     /*
     * All code below here is used to get permission for location

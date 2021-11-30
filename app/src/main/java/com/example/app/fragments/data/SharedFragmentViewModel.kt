@@ -15,27 +15,49 @@ class SharedFragmentViewModel : ViewModel() {
     private val mutableScreen = MutableLiveData<Int>()
     val screen = mutableScreen as LiveData<Int>
 
-    private val mutableMessage = MutableLiveData<messages>()
+    private val mutableMessage = MutableLiveData<messages?>()
     val message = mutableMessage as LiveData<messages>
+
+    val displayMessage = MutableLiveData<messages>()
+
+    var messageList = MutableLiveData<MutableList<messages>>()
 
     fun setMessage(message : messages){
         this.mutableMessage.value = message
     }
 
+    fun setEmptyMessage(){
+        this.mutableMessage.value = messages(
+            null,
+            null,
+            null,
+            null,
+            0,
+            null,
+            0
+        )
+    }
+
+    fun setMessageList(list : MutableList<messages>){
+        messageList.postValue(list)
+    }
+
     fun setSend(device : BluetoothDevice){
 
-        mutableScreen.value = 2
+        mutableScreen.value = 1
         mutableConnection.value = device
 
     }
 
-    fun setClient(){
+    fun setMessageView(){
+        mutableScreen.value = 2
+    }
+
+    fun setClient(message : messages){
+        displayMessage.value = message
         mutableScreen.value = 3
     }
 
-    fun setSettings(){
-        mutableScreen.value = 2
-    }
 
     fun setHome(){
         mutableScreen.value = 0

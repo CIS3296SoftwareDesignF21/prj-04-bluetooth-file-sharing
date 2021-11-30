@@ -77,7 +77,8 @@ class BluetoothAdvertiser {
      */
     private fun buildAdvertiseSettings(): AdvertiseSettings {
         return AdvertiseSettings.Builder()
-            .setAdvertiseMode(AdvertiseSettings.ADVERTISE_MODE_LOW_POWER)
+            .setAdvertiseMode(AdvertiseSettings.ADVERTISE_MODE_LOW_LATENCY)
+            .setTxPowerLevel(AdvertiseSettings.ADVERTISE_TX_POWER_HIGH)
             .setTimeout(0)
             .build()
     }

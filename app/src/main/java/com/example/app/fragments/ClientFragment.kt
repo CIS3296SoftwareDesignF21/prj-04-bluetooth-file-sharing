@@ -1,24 +1,20 @@
 package com.example.app.fragments
 
-import android.bluetooth.BluetoothDevice
+import android.graphics.BitmapFactory
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.example.app.bluetooth.BluetoothClient
 import com.example.app.bluetooth.BluetoothGATT
-import com.example.app.bluetooth.data.ConnectionLiveData
 import com.example.app.databinding.FragmentClientBinding
 import com.example.app.fragments.data.SharedFragmentViewModel
 import com.example.app.messages.messages
+import java.io.ByteArrayInputStream
 
 
 /*
@@ -30,11 +26,8 @@ import com.example.app.messages.messages
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 class ClientFragment : Fragment() {
 
-    private val sharedViewModel : SharedFragmentViewModel by activityViewModels()
-
-    private val clientViewModel : ConnectionLiveData by viewModels()
-
     private lateinit var binding: FragmentClientBinding
+    val sharedViewModel : SharedFragmentViewModel by activityViewModels()
 
 
     override fun onCreateView(
@@ -50,15 +43,21 @@ class ClientFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
 
+        val it = sharedViewModel.displayMessage.value!!
 
-        val message = Observer<messages> {
+        if(it.byteArray!=null) {
+            val inputStream = ByteArrayInputStream(it.byteArray)
+            val bitmap = BitmapFactory.decodeStream(inputStream)
 
-
-
+            binding.imageView.setImageBitmap(bitmap)
         }
 
+
+        binding.textView.text = it.textContent
+        binding.deviceTitle.text = it.sender
+
+
         /*tell our observer to start observing*/
-        BluetoothGATT.remoteMessage.observe(viewLifecycleOwner, message)
 
     }
 
