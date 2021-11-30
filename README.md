@@ -14,11 +14,7 @@ of networks and sending files and messages.
 
 ## Project Relevance
 
-This project will likely include all the education goals. The app will make use a of GUI to
-allow the user to perform various actions. Multi-threading and parallelism are important for any
-application that uses networking to allow app functionality while waiting for responses over a network.
-UML, TDD, object-oriented design, and debugging will all be necessary for a project of this scale and
-complexity.
+This project will touch on many of the education goals for this course. The app will make use a of GUI to allow the user to perform various actions. It will utilize multi-threading and parallelism to allow the app to function while performing time consuming network actions. UML, TDD, object-oriented design, and debugging will all be utilized as well given the scale of what we are trying to accomplish.
 
 ## Conceptual Design
 
@@ -40,13 +36,11 @@ complexity.
 - More complex user interface
  
 ##  Vision statement
-FOR teachers, people without reliable internet, communicator, and more WHO need a way to quickly and 
-reliably transfer files to near-by recipients, THE Fileshare mobile app is a bluetooth driven app
+FOR people without reliable internet/cell service and others WHO need a way to quickly and 
+reliably transfer files to near-by recipients, THE file sharing mobile app is a Bluetooth driven app
 THAT sets up a file sharing network from one phone to others via bluetooth.
 
-UNLIKE Android Nearby Share, users can choose to listen in so that the files arent available to 
-everyone. This leads to a pseudo-community-privacy file share channel. OUR app allows for simple file
-transfer between expecting parties who need the data quickly.
+UNLIKE other Bluetooth file transfering solutions, users can route their files through other devices to increase the physical range of file sharing capabilities. This leads to a pseudo-community-privacy file sharing channel. OUR app allows for reliable file transfer between expecting parties who may not have other file transferring options.
 
 ##  Feature list
 * Two screen UI
@@ -61,52 +55,38 @@ transfer between expecting parties who need the data quickly.
 
 ## Use Case
 
-This app is alternative to other file transfering solutions like mobile data, WiFi, and physical devices. See the personas for more detailed use cases of this app.
-
-## Required Resources
-
-**This project uses:**
-* Java
-* Kotlin
-
-**To Build**
-This project must be built using gradle and the Android SDK >6.0. To built all that is needed is to execute the 
-gradle build scripts, this is done very easily using either intelliJ or Android Studio. Running the application
-requires an Android device emulator or a physical device. 
-
+This app is an alternative to other file transfering solutions like mobile data, WiFi, and physical devices. See the personas for more detailed use cases of this app.
 
 # Personas
 
 ## Persona 1 - Carl: an average, not so technically adept user - shares files without Wifi or cellular
 
-Carl is a simple man who lives in a remote village without access to cellular or wireless internet access. He and everyone he knows uses bridgefy religiously, 
-as it's their only way to transfer files with the absence of other forms of telecommunication. Carl is a coal miner by trade, and his brother Tom is a 
-construction worker. Carl joined the work force out of high school and don't have any higher education. He tends to go into a nearby city to visit Tom and use the Wifi to connect with the outside world.
+Carl is a simple man who lives in a remote village without cellular or wireless internet access. He and everyone he knows uses the Bluetooth File Transfer app religiously, as it's their only way to exchange files in the absence of other forms of telecommunication. Carl is a coal miner by trade, and his brother Tom is a 
+construction worker. Carl joined the workforce out of high school. He has to go to a nearby city to visit Tom and use the Wifi to connect with the outside world.
 
-Tom recently bought Carl an Android phone for his birthday.However, Carl doesn't really know how to use it.
+Tom recently bought Carl an Android phone for his birthday. However, Carl doesn't really know how to use it.
 He has a bare minimum understanding of technology; he knows how to take a picture and open an app but that's about it. 
-Tom recently heard of Bridgefy and downloads it to Carl's phone. He explains that Bridgefy does not need Wifi or cellular to send messages.
-By using Bridgefy, one Carl and Tom can exchange messages by using a string of users.Carl now uses Bridgefy to send 
-pictures of his kids to his brother. Fortunately, there are enough users between him and his brother to bridge the gap between them via multiple hops of bluetooth. 
+Tom recently heard of the Bluetooth File Transfer app and downloads it to Carl's phone. He explains that the Bluetooth File Transfer app does not need Wifi or cellular data to send messages.
+By using the Bluetooth File Transfer app, Carl and Tom can exchange messages over large distances. Fortunately, there are enough users between him and his brother to bridge the gap between them via multiple hops of bluetooth. Carl now uses the Bluetooth File Transfer app to send 
+pictures of his kids to his brother.  
 
 ## Persona 2 - Tony: Introverted Student - mass communication at once
 
-Tony is a really shy student who knows how to use his phone and is on social media. Tony is in the 11th grade and tends to be good with technology.
-He is on many Discord servers, watching the latest tech news. He is an avid gamer and tends to maintain his contacts with people virtually. 
-Tony has always wanted to become more popular, and he notices that all the 
+Tony is a really shy student who knows how to use his phone and is on social media. Tony is in the 11th grade, and is fairly good with technology.
+He is on many Discord servers, and keeps up with the latest tech news. He is an avid gamer and tends to maintain his contacts with people virtually. 
 
-Tony wants to have party to become more popular, but he is afriad to invite his classmates face to face. So Tony uses the bluetooth sharing app
+Tony wants to throw a party to become more popular, but he is afraid to invite his classmates face to face. Tony uses the Bluetooth File Transfer app
 at school to send invitations to everyone there who also has the app. The invitation includes pictures and a message
-with details about the party for everyone to see. Everyone gets the invitation and thinks that Tony is so cool for using
-bluetooth to invite them that they all come. Tony becomes popular and gains confidence.
+with details about the party for everyone to see. Everyone gets the invitation and thinks that Tony is super cool for using
+Bluetooth to invite them. The party was a massive success, Tony became one of the most popular kids in school, and dropped out to pursue a lucrative career in rap.
 
 ## Persona 3 - Peter: Setting Up A New Phone - bulk transfer
 
 Peter is definitely not an expert with technology, but he knows his way around his phone. He works as a construction manager of his own company, 
-and a bachelor's in finance. He chooses to buy his music off the internet rather than pay for subscription services. 
+and has a bachelor's in finance. He chooses to buy his music off the internet rather than pay for subscription services. 
 He gets a new android phone and would like to transfer his music library stored in a folder on his current android phone. 
 Peter has also used his phone as his general purpose storage device over the years and would like to tranfer in bulk, files of different types. 
-He realized that using the Bluetooth File tranfer app he can select all his old files and send them over to his new phone.
+He realized that using the Bluetooth File Transfer app he can select all his old files and send them over to his new phone.
 
 Why this option is particulary of interest to Peter is that his current phone is not a newer one that supports quick 
 setup processes over mobile date or WiFi, so his options are limited. Thanks to our Bluetooth File Tranfer App, there is
@@ -117,18 +97,30 @@ making his setup process hassle free.
 
 ## Persona 4 - Jennifer: An old-fashioned teacher - hold files for later use
 
-Jennifer is a 26 year old English high school teacher. She completed up through her bachelors in teaching and english
-while at Temple University in 2019. She  She knows very little about technology outside of laptop and word processor usage. 
+Jennifer is a 26 year old high school English teacher. She completed her bachelors degrees in teaching and English
+ at Temple University in 2019. She  She knows very little about technology outside of basic laptop and word processor usage. 
 She spends most of her time rigorously working on lesson plans and for her students and raising her new born child. 
 She doesnt have time to keep up to date with the newest technology or communication trends. 
 
 Jennifer's curiculum involve various handouts, worksheets, and quizes. She has never been one for accepting change in her line of
 work. However, with COVID-19 still prevalent, she needs a paperless, reliable, and quick way to get handouts to her students in class on demand.
-As much as she was opposed to integrating onlinesolutions into her line of work, Jennifer uses her limited technology skills to share her material with her class. She needs her students to be able to retain the wokrsheets so they can send it back. Bridgefy allows for this by storing her worksheets so the students cna access them later on, or send them back to her too. 
+As much as she was opposed to integrating online solutions into her work, Jennifer uses her limited technology skills to share her materials with her class. She needs her students to be able to retain the wokrsheets so they can send it back. The Bluetooth File Transfer app allows for this by storing her worksheets so the students can access them later on, or send them back to her when they are completed. 
 
 ## Persona 5 - Emma: A genius hacker - untraceable communication
 
-Emma is a genius hacker who knows the ins and outs of every computer system on the planet. With a Masters in computer science at UPenn and over 20 years of industry experience, she's the best of the best. Emma had been losing money to her gambling problem, so she had to find a way to get money really quick. Shr does some scouting and finds an up-and-coming company who has billions of dollars worth of data. She finds a security problem in their system and creates her master plan. Once she pulls it off,
-she can sell it to the highest bidder and would have more money than she could ever spend. 
+Emma is a genius hacker who knows the ins and outs of every computer system on the planet. With a Masters in computer science at UPenn and over 20 years of industry experience, she's the best of the best. Emma was facing a large amount of debt after an over-confident night at the casino. She had to find a way to get money  fast, so she did some scouting and found an up-and-coming company with billions of dollars worth of data. She found a major security problem in their system, and wasted no time writing an exploit to steal their data.
 
-After pulling off a multi-billion dollar digital heist, Emma has to meticulously cover her tracks. Determined to evade detection by the NSA and other government agencies, Emma turns to bridgefy to securely exfiltrate the stolen data to her buyers. Bridgefy is the ideal solution to her problems, as it avoids common channels of communication that are more likely to be monitored by the people trying to catch her in the act. With no one knowing who she is or where the communication is going to, she can easily avoid detection. Now she can live worry-free with all her money.
+After pulling off this multi-billion dollar digital heist, Emma had to meticulously cover her tracks. Determined to evade detection by the NSA and other government agencies, Emma turned to the Bluetooth File Transfer app to securely exfiltrate the stolen data to her buyers. The Bluetooth File Transfer app is the ideal solution to her problems, as it avoids common channels of communication that are more likely to be monitored by the people trying to catch her in the act. With no one knowing who she is or where the communication is going to, she can easily avoid detection. She now lives in a multi-million dollar mansion without a care in the world.
+
+## Required Resources
+
+**This project uses:**
+* Java
+* Kotlin
+
+**To Build**
+This project must be built using gradle and the Android SDK >6.0. To build, all that is needed is to execute the 
+gradle build scripts. This is done very easily using either intelliJ or Android Studio. Running the application
+requires an Android device emulator or a physical device. 
+
+
