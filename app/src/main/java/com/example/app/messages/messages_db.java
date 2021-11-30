@@ -13,10 +13,13 @@ public class messages_db {
     private Hashtable<String, ArrayList<String>> message_db_rec = new Hashtable<>();
 
     private Hashtable<String, ArrayList<String>> message_db_sent = new Hashtable<>();
+    
+    private latest_message;
 
-    public messages_db(Hashtable<String, ArrayList<String>> hash_rec, Hashtable<String, ArrayList<String>> hash_sent) {
+    public messages_db(Hashtable<String, ArrayList<String>> hash_rec, Hashtable<String, ArrayList<String>> hash_sent, messages latest_message) {
         this.message_db_rec = hash_rec;
         this.message_db_sent = hash_sent;
+        this.latest_message = latest_message;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -24,6 +27,7 @@ public class messages_db {
         ArrayList<String> list = message_db_rec.get(message.sender);
         list.add(message.textContent);
         ArrayList<String> oldlist = message_db_rec.replace(message.sender, list);
+        latest_message = message;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -31,6 +35,7 @@ public class messages_db {
         ArrayList<String> list = message_db_sent.get(message.sender);
         list.add(message.textContent);
         ArrayList<String> oldlist = message_db_sent.replace(message.sender, list);
+        latest_message = message;
     }
 
     private ArrayList<String> get_sent(String name) {
