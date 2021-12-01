@@ -106,6 +106,7 @@ object BluetoothGATT {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     fun handleInputMessage(device: BluetoothDevice, value: ByteArray){
 
         temp_message = null
@@ -148,6 +149,7 @@ object BluetoothGATT {
 
         message?.let {
             _messageList.add(it)
+            sharedViewModel.messagedb.store_rec_message(it)
             sharedViewModel.setMessageList(_messageList)
         }
 
@@ -179,6 +181,7 @@ object BluetoothGATT {
         }
 
 
+        @RequiresApi(Build.VERSION_CODES.N)
         override fun onCharacteristicWriteRequest(
             device: BluetoothDevice?,
             requestId: Int,

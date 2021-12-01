@@ -17,8 +17,10 @@ import com.example.app.bluetooth.BluetoothClient
 import com.example.app.databinding.FragmentSendBinding
 import com.example.app.fragments.data.SharedFragmentViewModel
 import com.example.app.messages.messages
+import com.example.app.messages.messages_db
 import kotlinx.coroutines.runBlocking
 import java.io.ByteArrayInputStream
+
 
 
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
@@ -60,6 +62,7 @@ class SendFragment : Fragment() {
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -72,9 +75,11 @@ class SendFragment : Fragment() {
             if (fileRequest){
 
                 sharedViewModel.message.value!!.textContent = binding.messageBoxID.text.toString()
+                
+                sharedViewModel.messagedb.store_sent_message(sharedViewModel.message.value!!)
 
                 btClient.sendMessage(sharedViewModel.message.value!!)
-
+                
 
             }else{
 

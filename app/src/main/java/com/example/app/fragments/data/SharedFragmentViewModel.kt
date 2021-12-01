@@ -5,8 +5,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.app.messages.messages
+import com.example.app.messages.messages_db
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 class SharedFragmentViewModel : ViewModel() {
+
+    //database
+    val messagedb = messages_db()
 
     private val mutableConnection = MutableLiveData<BluetoothDevice>()
     val connection = mutableConnection as LiveData<BluetoothDevice>
