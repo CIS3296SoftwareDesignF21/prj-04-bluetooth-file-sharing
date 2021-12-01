@@ -123,4 +123,4 @@ This project must be built using gradle and the Android SDK >6.0. To build, all 
 gradle build scripts. This is done very easily using either intelliJ or Android Studio. Running the application
 requires an Android device emulator or a physical device. 
 
-
+![image](CS3296_UML/BluetoothFileShare.drawio.png)
