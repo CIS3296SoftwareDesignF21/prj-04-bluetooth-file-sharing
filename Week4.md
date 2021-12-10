@@ -1,8 +1,6 @@
 # List the tasks from Trello that each team member have accomplished during this fourth week.
 
 ### Nick
-
-- Serialization/Deserialization
 - Merging 
 - Finishing touches with Bluetooth
 
@@ -11,8 +9,7 @@
 - File storage
 
 ### Caleb
-
-- Message database
+-  Serialization/Deserialization
 
 ### Akshay
 
